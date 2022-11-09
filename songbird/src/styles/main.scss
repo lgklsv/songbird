@@ -1,6 +1,7 @@
 @import 'header';
 @import 'quiz-line';
 @import 'secret-bird';
+@import 'answers-options';
 @import 'bird-card';
 @import 'footer';
 
@@ -11,10 +12,11 @@
     --text-color: #ffffff;
 
     --quiz-line-color: #007c5d ;
-    --quiz-line-color-active: #00bc8c;
+    --quiz-color-active: #00bc8c;
+    --quiz-color-wrong: #ff0000;
     --border-color: #555;
+    --color-light: #444;
 }
-
 
 * {
     margin: 0;
@@ -37,4 +39,12 @@ html {
 
 .regtext {
     font-size: 15px;
+}
+
+.answers {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 1.5rem;
 }
