@@ -14,5 +14,118 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <div class="header__logo"></div>
+                <div class="header__score">
+                    <p class="regtext">Score:</p>
+                    <p class="regtext header__score-amount">0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="quiz-line">
+                <div class="quiz-line__btn">
+                    <p class="regtext">Разминка</p>
+                </div>
+                <div class="quiz-line__btn">
+                    <p class="regtext">Воробьиные</p>
+                </div>
+                <div class="quiz-line__btn">
+                    <p class="regtext">Лесные птицы</p>
+                </div>
+                <div class="quiz-line__btn">
+                    <p class="regtext">Певчие птицы</p>
+                </div>
+                <div class="quiz-line__btn">
+                    <p class="regtext">Хищные птицы</p>
+                </div>
+                <div class="quiz-line__btn">
+                    <p class="regtext">Морские птицы</p>
+                </div>
+            </div>
+            <div class="bird-card">
+                <img class="bird-card__img secret" src="" alt="bird-card">
+                <div class="bird-card__info">
+                    <h2 class="bird-card__title">******</h2>
+                    <div class="bird-card__audio">Audio HERE</div>
+                </div>
+            </div>
+            <div class="answers">
+                <div class="answers-options">
+                    <div class="answers-options__item">
+                        <div class="answers-options__status answers-options__status_right"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Ворон</p>
+                        </div>
+                    </div>
+                    <div class="answers-options__item">
+                        <div class="answers-options__status answers-options__status_wrong"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Журавль</p>
+                        </div>
+                    </div>
+                    <div class="answers-options__item">
+                        <div class="answers-options__status"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Ласточка</p>
+                        </div>
+                    </div>
+                    <div class="answers-options__item">
+                        <div class="answers-options__status"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Козодой</p>
+                        </div>
+                    </div>
+                    <div class="answers-options__item">
+                        <div class="answers-options__status"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Кукушка</p>
+                        </div>
+                    </div>
+                    <div class="answers-options__item">
+                        <div class="answers-options__status"></div>
+                        <div class="answers-options__title">
+                            <p class="regtext">Синица</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bird-card">
+                    <div class="bird-card__header">
+                        <img class="bird-card__img_revealed" src="" alt="bird-card">
+                        <div class="bird-card__info">
+                            <h2 class="bird-card__title bird-card__title_small">Ворон</h2>
+                            <h2 class="bird-card__subtitle">Corvus corax</h2>
+                            <div class="bird-card__audio bird-card__audio_small">Audio HERE</div>
+                        </div>
+                        <div class="bird-card__description">
+                            <p class="bird-card__text regtext">Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="next-btn">
+                <p class="regtext">Next Level</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-container__top">
+                    SONGBIRD ENGINEERED BY 
+                    <a href="https://github.com/lgklsv" target="_blank">
+                        LGKLSV<i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <div class="footer-container__bottom">
+                &#169 2022
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
