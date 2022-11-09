@@ -1,3 +1,23 @@
 .quiz-line {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+
+    .quiz-line__btn {
+        background-color: var(--quiz-line-color);
+        padding: 10px 12px;
+        text-align: center;
+
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        &:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+    }
     
+    .quiz-line__btn_active {
+        background-color: var(--quiz-line-color-active);
+    }
 }
