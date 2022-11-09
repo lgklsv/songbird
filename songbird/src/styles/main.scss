@@ -13,6 +13,7 @@
 
     --quiz-line-color: #007c5d ;
     --quiz-color-active: #00bc8c;
+    --quiz-color-active-hover: #20c997;
     --quiz-color-wrong: #ff0000;
     --border-color: #555;
     --color-light: #444;
@@ -47,4 +48,17 @@ html {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 1.5rem;
+}
+
+.next-btn {
+    width: 100%;
+    background-color: var(--quiz-color-active);
+    padding: 8px 12px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--quiz-color-active-hover);
+    }
 }
