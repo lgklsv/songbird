@@ -1,4 +1,4 @@
-.footer-container {
+.footer {
     height: 80px;
     width: 100%;
     display: flex;
@@ -7,4 +7,17 @@
     align-items: center;
     font-size: 12px;
     padding-bottom: 1rem;
+    color: var(--color-light);
+
+    .footer__link {
+        color: var(--border-color);
+
+        &:hover {
+            color: var(--text-color);
+        }
+
+        .fa-github {
+            text-decoration: underline;
+        }
+    }
 }
