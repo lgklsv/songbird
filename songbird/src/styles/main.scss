@@ -1,5 +1,16 @@
 @import 'header';
+@import 'quiz-line';
 @import 'footer';
+
+
+:root {
+    --background-color-primary: #222;
+    --background-color-secondary: #303030;
+    --text-color: #ffffff;
+
+    --quiz-line-color-primary: #00bc8c;
+    --quiz-line-color-secondary: #007c5d;
+}
 
 
 * {
@@ -8,3 +19,19 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: var(--background-color-primary);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 1140px; 
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.regtext {
+    font-size: 15px;
+}

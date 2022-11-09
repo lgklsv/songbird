@@ -64,7 +64,7 @@ module.exports = {
             chunks: ['bundle']
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash:8].css',
+            // filename: '[name].[hash:8].css',
         }  
         ),
         // new FaviconsWebpackPlugin({

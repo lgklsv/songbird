@@ -1,7 +1,27 @@
-.header__logo {
-    background: url('../assets/svg/logo.4f82cd73.svg');
-    width: 1000px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     height: 100px;
-    background-color: black;
-    background-repeat: no-repeat;
+    width: 100%;
+    margin-top: 1.5rem;
+    .header__score {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5rem;
+
+        .regtext_score {
+            font-size: 1.171875rem;
+
+        }
+    }
+
+    .header__logo {
+        background: url('../assets/svg/logo.4f82cd73.svg') no-repeat;
+        width: 200px;
+        height: 100px;
+        background-size: 100%;
+    }
 }
+
