@@ -1,5 +1,7 @@
 @import 'header';
 @import 'quiz-line';
+@import 'secret-bird';
+@import 'bird-card';
 @import 'footer';
 
 
@@ -10,6 +12,7 @@
 
     --quiz-line-color: #007c5d ;
     --quiz-line-color-active: #00bc8c;
+    --border-color: #555;
 }
 
 
