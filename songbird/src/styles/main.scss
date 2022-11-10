@@ -50,6 +50,11 @@ html {
     margin-bottom: 1.5rem;
 }
 
+.message {
+    margin: 0 1rem;
+    white-space: pre-line;
+}
+
 .next-btn {
     width: 100%;
     background-color: var(--quiz-color-active);
