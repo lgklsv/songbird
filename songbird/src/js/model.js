@@ -13,3 +13,33 @@ export const getRandomBird = function(level) {
 export const getRandomBirdsArray = function(level) {
     return birds[level].sort( () => Math.random() - 0.5);
 }
+
+export const setSongDuration = function() {
+    const allAudios = document.querySelectorAll('.audio__src');
+
+    allAudios.forEach(audio => {
+        audio.addEventListener('loadedmetadata', function() {
+            const duration = audio.duration;
+            const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+
+            const sec = parseInt(duration % 60);
+            const min = parseInt((duration / 60) % 60);
+            durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        });
+
+        audio.addEventListener('timeupdate', function() {
+            const duration = audio.duration;
+            const curDuration = audio.currentTime;
+            const durationCurEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
+            const progressBar = audio.nextElementSibling.nextElementSibling.firstElementChild;
+
+            const sec = parseInt(curDuration % 60);
+            const min = parseInt((curDuration / 60) % 60);
+            durationCurEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+
+            const percentage = (curDuration/duration) * 100;
+            progressBar.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${percentage}%, rgb(115, 115, 115) ${percentage}%, rgb(115, 115, 115) 100%)`;
+            progressBar.value = percentage;
+        })
+    })
+}

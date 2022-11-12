@@ -21,6 +21,7 @@ class AudioView extends View {
                 } 
                 if (playIcon.classList.contains('fa-pause')) {
                     audio.play();
+                    
                 }
             } 
         })

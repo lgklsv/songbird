@@ -9,7 +9,7 @@ class RandomBirdView extends View {
             <div class="secret-bird__info">
                 <h2 class="secret-bird__title">${this._data.name}</h2>
                 <div class="secret-bird__audio audio">
-                    <audio class="audio__src">
+                    <audio class="audio__src" preload="metadata">
                         <source src="${this._data.audio}" type="audio/mpeg">
                     </audio>
                     <div class="audio__btn-circle">
@@ -18,8 +18,8 @@ class RandomBirdView extends View {
                     <div class="audio__input">
                         <input type="range" min="0" max="100" step="1" id="slider" value="0">
                         <div class="audio__time-info">
-                            <div class="audio__time audio__time_left">0:00</div>
-                            <div class="audio__time audio__time_right">1:30</div>
+                            <div class="audio__time audio__time_left">00:00</div>
+                            <div class="audio__time audio__time_right">Loading...</div>
                         </div>
                     </div>
                     <div class="audio__volume"> 
