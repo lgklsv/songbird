@@ -1,5 +1,6 @@
 @import 'header';
 @import 'quiz-line';
+@import 'audio-player';
 @import 'secret-bird';
 @import 'answers-options';
 @import 'bird-card';
@@ -11,10 +12,13 @@
     --background-color-secondary: #303030;
     --text-color: #ffffff;
 
+    --audio-gradient: linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 44.9506%, rgb(115, 115, 115) 44.9506%, rgb(115, 115, 115) 100%);
     --quiz-line-color: #007c5d ;
     --quiz-color-active: #00bc8c;
     --quiz-color-active-hover: #20c997;
     --quiz-color-wrong: #ff0000;
+    --extra-light-color: #808080;
+    --audio-time: #d3d3d3;
     --border-color: #555;
     --color-light: #444;
 }

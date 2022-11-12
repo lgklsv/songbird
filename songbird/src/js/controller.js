@@ -13,6 +13,6 @@ const init = function() {
     randomBirdView.render(model.getRandomBird(0));
     answersView.render(model.getRandomBirdsArray(0));
     birdCardView.renderMessage('Послушайте плеер.\n Выберите птицу из списка');
-    // birdCardView.render(model.getRandomBird(0));
+    birdCardView.render(model.getRandomBird(0));
 }
 init();

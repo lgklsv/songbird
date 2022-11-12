@@ -10,7 +10,21 @@ class BirdCardView extends View {
                 <div class="bird-card__info">
                     <h2 class="bird-card__title">${this._data.name}</h2>
                     <h2 class="regtext bird-card__subtitle">${this._data.species}</h2>
-                    <div class="bird-card__audio">Audio HERE</div>
+                    <div class="bird-card__audio audio">
+                        <div class="audio__btn-circle">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div class="audio__input">
+                            <input type="range" min="0" max="100" step="1" id="slider" value="0">
+                            <div class="audio__time-info">
+                                <div class="audio__time audio__time_left">0:00</div>
+                                <div class="audio__time audio__time_right">1:30</div>
+                            </div>
+                        </div>
+                        <div class="audio__volume"> 
+                            <i class="fa-solid fa-volume-high"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="bird-card__description">
