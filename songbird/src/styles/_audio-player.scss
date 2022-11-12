@@ -105,7 +105,9 @@
     position: relative;
     cursor: pointer;
 
-    .fa-volume-high {
+    .fa-volume-high,
+    .fa-volume-low,
+    .fa-volume-xmark {
         position: absolute;
         color: var(--quiz-color-active);
         font-size: 1.2rem;

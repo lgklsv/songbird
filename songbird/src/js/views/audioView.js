@@ -74,7 +74,23 @@ class AudioView extends View {
                 const volumeValue = e.target.value;
                 const volumeIndicator = e.target.previousElementSibling;
                 const audio = e.target.parentElement.parentElement.parentElement.firstElementChild; 
+                const audioIcon = e.target.parentElement.previousElementSibling;
 
+                if(volumeValue > 50 && !audioIcon.classList.contains('fa-volume-high')) {
+                    audioIcon.className = '';
+                    audioIcon.classList.add('fa-solid');
+                    audioIcon.classList.add('fa-volume-high');
+                }
+                if(volumeValue <= 50 && !audioIcon.classList.contains('fa-volume-low')) {
+                    audioIcon.className = '';
+                    audioIcon.classList.add('fa-solid');
+                    audioIcon.classList.add('fa-volume-low');
+                }
+                if(volumeValue == 0 && !audioIcon.classList.contains('fa-volume-xmark')) {
+                    audioIcon.className = '';
+                    audioIcon.classList.add('fa-solid');
+                    audioIcon.classList.add('fa-volume-xmark');
+                }
                 audio.volume = volumeValue/100;
                 volumeIndicator.textContent = volumeValue;
             }
