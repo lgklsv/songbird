@@ -40,6 +40,7 @@ export const setSongDuration = function() {
             const percentage = (curDuration/duration) * 100;
             progressBar.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${percentage}%, rgb(115, 115, 115) ${percentage}%, rgb(115, 115, 115) 100%)`;
             progressBar.value = percentage;
+
         })
     })
 }
