@@ -16,7 +16,7 @@ class RandomBirdView extends View {
                         <i class="fa-solid fa-play"></i>
                     </div>
                     <div class="audio__input">
-                        <input type="range" min="0" max="100" step="1" id="slider" value="0">
+                        <input type="range" min="0" max="100" step="1" class="slider slider_birds" value="0">
                         <div class="audio__time-info">
                             <div class="audio__time audio__time_left">00:00</div>
                             <div class="audio__time audio__time_right">Loading...</div>
@@ -24,6 +24,10 @@ class RandomBirdView extends View {
                     </div>
                     <div class="audio__volume"> 
                         <i class="fa-solid fa-volume-high"></i>
+                        <div class="change-volume hidden">
+                            <p class="regtext change-volume__indicator">10</p>
+                            <input type="range" min="0" max="100" step="1" class="slider slider_vertical" orient="vertical" value="0">
+                        </div>
                     </div>
                 </div>
             </div>

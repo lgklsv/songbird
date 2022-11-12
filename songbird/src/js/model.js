@@ -14,7 +14,7 @@ export const getRandomBirdsArray = function(level) {
     return birds[level].sort( () => Math.random() - 0.5);
 }
 
-export const setSongDuration = function() {
+export const setSongDurations = function() {
     const allAudios = document.querySelectorAll('.audio__src');
 
     allAudios.forEach(audio => {

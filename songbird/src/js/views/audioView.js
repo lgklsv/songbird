@@ -1,11 +1,22 @@
 import View from "./View";
 
 class AudioView extends View {
+    _overlay = document.querySelector('.overlay');
 
     constructor() {
         super();
         this._addHandlerControls();
         this._addHandlerProgressBar();
+        this._addHandlerOverlay();
+    }
+
+    _addHandlerOverlay() {
+        this._overlay.addEventListener('click', function(e) {
+            const volumeInputs = document.querySelectorAll('.change-volume');
+
+            volumeInputs.forEach(inp => inp.classList.add('hidden'));
+            e.target.classList.add('hidden');
+        })
     }
     
     _addHandlerControls() {
@@ -24,24 +35,49 @@ class AudioView extends View {
                     audio.play();
                 }
             } 
+            if(e.target.classList == 'audio__volume') {
+                document.querySelector('.overlay').classList.remove('hidden');
+
+                const volumeBtn = e.target;
+                const volumeElement = volumeBtn.firstElementChild.nextElementSibling;
+                const audio = volumeBtn.parentElement.firstElementChild;
+                const volumeInput = volumeElement.firstElementChild.nextElementSibling;
+                const volumeIndicator = volumeElement.firstElementChild;
+
+                volumeIndicator.textContent = audio.volume * 100;
+                volumeInput.value = audio.volume * 100;
+
+                volumeElement.classList.toggle('hidden');
+            } 
         })
     }
 
     _addHandlerProgressBar() {
         document.body.addEventListener('input', function(e) {
-            const curPercentage = e.target.value;
-            const audio = e.target.parentElement.previousElementSibling.previousElementSibling;
-            const durationCurEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
-            const duration = audio.duration;
+            if(e.target.classList.contains('slider_birds')) {
+                const curPercentage = e.target.value;
+                const audio = e.target.parentElement.previousElementSibling.previousElementSibling;
+                const durationCurEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
+                const duration = audio.duration;
 
-            const curSec = (duration/100) * curPercentage;
-            const sec = parseInt(curSec % 60);
-            const min = parseInt((curSec / 60) % 60);
-            durationCurEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-            audio.currentTime = curSec;
+                const curSec = (duration/100) * curPercentage;
+                const sec = parseInt(curSec % 60);
+                const min = parseInt((curSec / 60) % 60);
+                durationCurEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+                audio.currentTime = curSec;
 
-            e.target.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${curPercentage}%, rgb(115, 115, 115) ${curPercentage}%, rgb(115, 115, 115) 100%)`;
-            e.target.value = curPercentage;
+                e.target.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${curPercentage}%, rgb(115, 115, 115) ${curPercentage}%, rgb(115, 115, 115) 100%)`;
+                e.target.value = curPercentage;
+            }
+
+            if (e.target.classList.contains('slider_vertical')) {
+                const volumeValue = e.target.value;
+                const volumeIndicator = e.target.previousElementSibling;
+                const audio = e.target.parentElement.parentElement.parentElement.firstElementChild; 
+
+                audio.volume = volumeValue/100;
+                volumeIndicator.textContent = volumeValue;
+            }
         })
     }
 }

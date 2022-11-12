@@ -15,6 +15,6 @@ const init = function() {
     answersView.render(model.getRandomBirdsArray(0));
     birdCardView.renderMessage('Послушайте плеер.\n Выберите птицу из списка');
     birdCardView.render(model.getRandomBird(0));
-    model.setSongDuration();
+    model.setSongDurations();
 }
 init();
