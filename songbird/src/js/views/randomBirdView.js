@@ -9,6 +9,9 @@ class RandomBirdView extends View {
             <div class="secret-bird__info">
                 <h2 class="secret-bird__title">${this._data.name}</h2>
                 <div class="secret-bird__audio audio">
+                    <audio class="audio__src">
+                        <source src="${this._data.audio}" type="audio/mpeg">
+                    </audio>
                     <div class="audio__btn-circle">
                         <i class="fa-solid fa-play"></i>
                     </div>

@@ -4,6 +4,7 @@ import secretBird from '../assets/img/bird.06a46938.jpg';
 import randomBirdView from './views/randomBirdView';
 import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
+import audioView from './views/audioView';
  
 document.querySelector('.secret-bird__img').src = secretBird;
 document.querySelector('.bird-card__img').src = secretBird;

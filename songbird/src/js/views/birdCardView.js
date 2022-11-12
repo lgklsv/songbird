@@ -11,6 +11,9 @@ class BirdCardView extends View {
                     <h2 class="bird-card__title">${this._data.name}</h2>
                     <h2 class="regtext bird-card__subtitle">${this._data.species}</h2>
                     <div class="bird-card__audio audio">
+                        <audio class="audio__src">
+                            <source src="${this._data.audio}" type="audio/mpeg">
+                        </audio>
                         <div class="audio__btn-circle">
                             <i class="fa-solid fa-play"></i>
                         </div>
