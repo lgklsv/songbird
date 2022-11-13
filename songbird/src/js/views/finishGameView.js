@@ -1,7 +1,7 @@
 import View from "./View"; 
 
 class FinishGameView extends View {
-    _parentElement = document.querySelector('.game-container');
+    _parentElement = document.querySelector('.game-over');
 
 
     _generateMarkup() {

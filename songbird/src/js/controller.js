@@ -8,7 +8,7 @@ import finishGameView from './views/finishGameView';
 
 
 const controlCheckAnswer = function(elem) {
-    if(elem.id == model.state.hiddenBird) {
+    if(elem.id == model.state.hiddenBird && !elem.firstElementChild.classList.contains('answers-options__status_right')) {
         const scoreInd = document.querySelector('.header__score-amount');
         const nextLevelBtn = document.querySelector('.next-btn');
 
@@ -34,7 +34,7 @@ const controlCheckAnswer = function(elem) {
         }
     } else {
         // Remenber if the answer was wrong 
-        if(!model.state.answered == true) {
+        if(!model.state.answered == true && !elem.firstElementChild.classList.contains('answers-options__status_wrong')) {
             elem.firstElementChild.classList.add('answers-options__status_wrong');
             model.state.missedAnsw++;
         }
@@ -77,14 +77,32 @@ const controlNextLevel = function(btn) {
 }
 
 const controlFinishGame = function(btn) {
+    btn.classList.remove('next-btn_finish');
+    btn.textContent = 'Попробовать еще раз!';
+
     finishGameView.render(model.state);
+    setTimeout(() => btn.classList.add('next-btn_try-again'), 100);
+    // btn.classList.add('next-btn_try-again');
 }
 
-const init = function() {
+const controlTryAgain = function(btn) {
+    const scoreInd = document.querySelector('.header__score-amount');
+
+    btn.classList.remove('next-btn_try-again');
+    btn.textContent = 'Следующий Уровень';
+    model.state.score = 0;
+    model.state.level = 0;
+    scoreInd.textContent = model.state.score;
+
+    init();
+}
+
+function init() {
     initLevel(model.state.level);
 
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);
     answersView._addHandlerFinishGame(controlFinishGame);
+    answersView._addHandlerTryAgain(controlTryAgain);
 }
 init();

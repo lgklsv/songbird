@@ -27,11 +27,30 @@ class AnswersView extends View {
                 answersOpt.classList.add('hidden');
                 birdCard.classList.add('hidden');
         
-                e.target.textContent = 'Попробовать еще раз!';
                 handler(e.target);
             }
         })
     }    
+
+    _addHandlerTryAgain(handler) {
+        this._nextBtn.addEventListener('click', function(e) {
+            if(e.target.classList.contains('next-btn_try-again')){
+                const finishScreen = document.querySelector('.finish-game');
+                const secretBirdCont = document.querySelector('.secret-bird');
+                const answersCont = document.querySelector('.answers');  
+                const answersOpt = document.querySelector('.answers-options');
+                const birdCard = document.querySelector('.bird-card');
+
+                finishScreen.classList.add('hidden');
+                secretBirdCont.classList.remove('hidden');
+                answersCont.classList.remove('hidden');
+                answersOpt.classList.remove('hidden');
+                birdCard.classList.remove('hidden');
+        
+                handler(e.target);
+            }
+        })
+    }
 
     _addHandlerCheckAnswer(handler) {
         this._parentElement.addEventListener('click', function(e) {
