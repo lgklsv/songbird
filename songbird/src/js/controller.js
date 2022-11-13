@@ -18,9 +18,9 @@ const controlCheckAnswer = function(elem) {
         const rightAnswer = model.getAnsweredBird(model.state.level, elem.id);
 
         // Render Answer
-        randomBirdView.render(rightAnswer);
+        randomBirdView.update(rightAnswer);
         birdCardView.render(rightAnswer);
-        model.setSongDurations();
+        model.setSongDurations(model.state.answered);
 
         // Set score
         model.state.score = model.state.score + 5 - model.state.missedAnsw;

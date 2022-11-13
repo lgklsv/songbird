@@ -23,6 +23,9 @@ export default class View  {
         newElements.forEach((newEl, i) => {
             const curEl = curElements[i];
 
+            // Do not update certain flag or class
+            if(newEl.classList.contains('fa-play')) return;
+
             // Updates changed text
             if(!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') {
                 curEl.textContent = newEl.textContent;

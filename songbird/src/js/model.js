@@ -27,11 +27,20 @@ export const getAnsweredBird = function(level, id) {
 }
 
 
-export const setSongDurations = function() {
+export const setSongDurations = function(flag) {
     const allAudios = document.querySelectorAll('.audio__src');
 
+
     allAudios.forEach(audio => {
-        audio.addEventListener('loadedmetadata', function() {
+        if(flag) {
+            const duration = audio.duration;
+            const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+
+            const sec = parseInt(duration % 60);
+            const min = parseInt((duration / 60) % 60);
+            durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        }
+        audio.addEventListener('canplay', function() {
             const duration = audio.duration;
             const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
 
