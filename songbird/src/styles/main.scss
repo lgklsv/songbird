@@ -78,12 +78,18 @@ html {
 
 .next-btn {
     width: 100%;
-    background-color: var(--quiz-color-active);
+    background-color: var(--background-color-secondary);
     padding: 8px 12px;
     text-align: center;
     border-radius: 5px;
-    cursor: pointer;
+    border: 1px solid var(--color-light);
+    cursor: not-allowed;
+    user-select: none;
+}
 
+.next-btn_active {
+    background-color: var(--quiz-color-active);
+    cursor: pointer;
     &:hover {
         background-color: var(--quiz-color-active-hover);
     }

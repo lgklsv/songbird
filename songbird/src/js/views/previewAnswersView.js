@@ -5,7 +5,7 @@ class PreviewAnswersView extends View {
 
     _generateMarkup() {
         return `
-            <div class="answers-options__item">
+            <div class="answers-options__item" id="${this._data.id}">
                 <div class="answers-options__status"></div>
                 <div class="answers-options__title">
                     <p class="regtext">${this._data.name}</p>

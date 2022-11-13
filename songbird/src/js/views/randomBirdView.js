@@ -1,13 +1,15 @@
 import View from "./View";
+import { state as state } from '../model';
+import secretBird from '../../assets/img/bird.06a46938.jpg';
 
 class RandomBirdView extends View {
     _parentElement = document.querySelector('.secret-bird');
 
     _generateMarkup() {
         return `
-            <img class="secret-bird__img" src="${this._data.image}" alt="${this._data.name}">
+            <img class="secret-bird__img" src="${state.answered ? this._data.image : secretBird}" alt="${state.answered ? this._data.name : 'secretBird'}">
             <div class="secret-bird__info">
-                <h2 class="secret-bird__title">${this._data.name}</h2>
+                <h2 class="secret-bird__title">${state.answered ? this._data.name : "******"}</h2>
                 <div class="secret-bird__audio audio">
                     <audio class="audio__src" preload="metadata">
                         <source src="${this._data.audio}" type="audio/mpeg">
