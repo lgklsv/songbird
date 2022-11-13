@@ -26,27 +26,25 @@ export const getAnsweredBird = function(level, id) {
     return birds[level].find(bird => bird.id == id);
 }
 
+const renderSongDuration = function(audio) {
+    const duration = audio.duration;
+    const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+
+    const sec = parseInt(duration % 60);
+    const min = parseInt((duration / 60) % 60);
+    durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+} 
 
 export const setSongDurations = function(flag) {
     const allAudios = document.querySelectorAll('.audio__src');
 
-
     allAudios.forEach(audio => {
         if(flag) {
-            const duration = audio.duration;
-            const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
-
-            const sec = parseInt(duration % 60);
-            const min = parseInt((duration / 60) % 60);
-            durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+            renderSongDuration(audio)
         }
+        
         audio.addEventListener('canplay', function() {
-            const duration = audio.duration;
-            const durationEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
-
-            const sec = parseInt(duration % 60);
-            const min = parseInt((duration / 60) % 60);
-            durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+            renderSongDuration(audio)
         });
 
         audio.addEventListener('timeupdate', function() {

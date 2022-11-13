@@ -82,7 +82,6 @@ const controlFinishGame = function(btn) {
 
     finishGameView.render(model.state);
     setTimeout(() => btn.classList.add('next-btn_try-again'), 100);
-    // btn.classList.add('next-btn_try-again');
 }
 
 const controlTryAgain = function(btn) {
