@@ -4,6 +4,7 @@
 @import 'secret-bird';
 @import 'answers-options';
 @import 'bird-card';
+@import 'finish-game';
 @import 'footer';
 
 
@@ -91,7 +92,8 @@ html {
     }
 }
 
-.next-btn_active {
+.next-btn_active,
+.next-btn_finish {
     background-color: var(--quiz-color-active);
     cursor: pointer;
     &:hover {

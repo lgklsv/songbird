@@ -4,6 +4,7 @@ import randomBirdView from './views/randomBirdView';
 import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
 import audioView from './views/audioView';
+import finishGameView from './views/finishGameView';
 
 
 const controlCheckAnswer = function(elem) {
@@ -27,6 +28,10 @@ const controlCheckAnswer = function(elem) {
 
         // Acivate Next level btn
         nextLevelBtn.classList.add('next-btn_active');
+        if(model.state.lastLevel == model.state.level) {
+            nextLevelBtn.classList.remove('next-btn_active');
+            nextLevelBtn.classList.add('next-btn_finish');
+        }
     } else {
         // Remenber if the answer was wrong 
         if(!model.state.answered == true) {
@@ -65,7 +70,14 @@ const initLevel = function(level) {
 const controlNextLevel = function(btn) {
     btn.classList.remove('next-btn_active');
     model.state.level++;
+    if(model.state.lastLevel == model.state.level) {
+        btn.textContent = 'Завершить Игру';
+    };
     initLevel(model.state.level);
+}
+
+const controlFinishGame = function(btn) {
+    finishGameView.render(model.state);
 }
 
 const init = function() {
@@ -73,5 +85,6 @@ const init = function() {
 
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);
+    answersView._addHandlerFinishGame(controlFinishGame);
 }
 init();

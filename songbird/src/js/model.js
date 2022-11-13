@@ -5,7 +5,8 @@ export const state = {
     answered: false,
     hiddenBird: null,
     level: 0,
-    missedAnsw: 0
+    missedAnsw: 0,
+    lastLevel: birds.length - 1
 }
 
 export const getRandomBird = function(level) {
