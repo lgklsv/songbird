@@ -40,11 +40,22 @@ const controlCheckAnswer = function(elem) {
     }
 }
 
+const controlNextLevelOnTheLine = function(level) {
+    const levelItems = document.querySelectorAll('.quiz-line__btn');
+
+    levelItems.forEach(item => {
+        item.classList.remove('quiz-line__btn_active');
+    });
+
+    levelItems[level].classList.add('quiz-line__btn_active');
+}
+
 const initLevel = function(level) {
     model.state.answered = false;
     model.state.hiddenBird = null;
     model.state.missedAnsw = 0;
 
+    controlNextLevelOnTheLine(level);
     randomBirdView.render(model.getRandomBird(level));
     answersView.render(model.getRandomBirdsArray(level));
     birdCardView.renderMessage('Послушайте плеер.\n Выберите птицу из списка');
