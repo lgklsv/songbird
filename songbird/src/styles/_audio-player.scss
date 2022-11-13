@@ -63,21 +63,14 @@
     border-radius: 5px;
     border: 1px solid var(--border-color);
     z-index: 3;
-
-    .change-volume__indicator {
-        text-align: center;
-        margin-top: 3px;
-        font-size: 14px;
-        color: var(--audio-time);
-    }
 }
 
 .slider_vertical {
     position: absolute;
-    top: 40px;
-    left: -16px;
+    top: 31px;
+    left: -24px;
     transform: rotate(270deg);
-    width: 60px;
+    width: 75px;
 }
 
 .audio__input {

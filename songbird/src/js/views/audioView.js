@@ -41,10 +41,8 @@ class AudioView extends View {
                 const volumeBtn = e.target;
                 const volumeElement = volumeBtn.firstElementChild.nextElementSibling;
                 const audio = volumeBtn.parentElement.firstElementChild;
-                const volumeInput = volumeElement.firstElementChild.nextElementSibling;
-                const volumeIndicator = volumeElement.firstElementChild;
+                const volumeInput = volumeElement.firstElementChild;
 
-                volumeIndicator.textContent = audio.volume * 100;
                 volumeInput.value = audio.volume * 100;
 
                 volumeElement.classList.toggle('hidden');
@@ -72,7 +70,6 @@ class AudioView extends View {
 
             if (e.target.classList.contains('slider_vertical')) {
                 const volumeValue = e.target.value;
-                const volumeIndicator = e.target.previousElementSibling;
                 const audio = e.target.parentElement.parentElement.parentElement.firstElementChild; 
                 const audioIcon = e.target.parentElement.previousElementSibling;
 
@@ -92,7 +89,6 @@ class AudioView extends View {
                     audioIcon.classList.add('fa-volume-xmark');
                 }
                 audio.volume = volumeValue/100;
-                volumeIndicator.textContent = volumeValue;
             }
         })
     }
