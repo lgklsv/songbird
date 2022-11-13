@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -67,20 +67,20 @@ module.exports = {
             // filename: '[name].[hash:8].css',
         }  
         ),
-        // new FaviconsWebpackPlugin({
-        //     logo: 'src/assets/img/tttt-icon.png',
-        //     mode: 'webapp',
-        //     devMode: 'webapp',
-        //     prefix: 'assets/favicons/',
-        //     cache: true,
-        //     inject: htmlPlugin => {
-        //       return true;
-        //       return basename(htmlPlugin.options.filename) === 'pages/articles.html';
-        //     },
-        //     favicons: {
-        //       background: '#fff',
-        //       theme_color: '#333',
-        //     },
-        // }),
+        new FaviconsWebpackPlugin({
+            logo: 'src/assets/img/favicon.png',
+            mode: 'webapp',
+            devMode: 'webapp',
+            prefix: 'assets/favicons/',
+            cache: true,
+            inject: htmlPlugin => {
+              return true;
+              return basename(htmlPlugin.options.filename) === 'pages/articles.html';
+            },
+            favicons: {
+              background: '#fff',
+              theme_color: '#333',
+            },
+        }),
     ],
 };

@@ -28,9 +28,7 @@ class AnswersView extends View {
                 birdCard.classList.add('hidden');
 
                 const allAudios = document.querySelectorAll('.audio__src');
-                allAudios.forEach(audio => {
-                    audio.pause();
-                })
+                allAudios.forEach(audio => audio.pause());
         
                 handler(e.target);
             }
