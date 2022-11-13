@@ -3,10 +3,20 @@ import View from "./View";
 
 class AnswersView extends View {
     _parentElement = document.querySelector('.answers-options');
+    _nextBtn = document.querySelector('.next-btn');
+
+
+    _addHandlerNextLevel(handler) {
+        this._nextBtn.addEventListener('click', function(e) {
+            if (e.target.classList.contains('next-btn_active')) {
+                handler(e.target);
+            }
+        })
+    }
 
     _addHandlerCheckAnswer(handler) {
         this._parentElement.addEventListener('click', function(e) {
-            handler(e.target)
+            handler(e.target);
         })
     }
 

@@ -51,9 +51,16 @@ const initLevel = function(level) {
     model.setSongDurations();
 }
 
+const controlNextLevel = function(btn) {
+    btn.classList.remove('next-btn_active');
+    model.state.level++;
+    initLevel(model.state.level);
+}
+
 const init = function() {
     initLevel(model.state.level);
 
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
+    answersView._addHandlerNextLevel(controlNextLevel);
 }
 init();

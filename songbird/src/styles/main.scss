@@ -85,6 +85,10 @@ html {
     border: 1px solid var(--color-light);
     cursor: not-allowed;
     user-select: none;
+
+    .next-btn__text {
+        pointer-events: none;
+    }
 }
 
 .next-btn_active {

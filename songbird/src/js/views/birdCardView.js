@@ -4,7 +4,6 @@ class BirdCardView extends View {
     _parentElement = document.querySelector('.bird-card');
 
     _generateMarkup() {
-
         return `
             <div class="bird-card__header">
                 <img class="bird-card__img" src="${this._data.image}" alt="${this._data.name}">
