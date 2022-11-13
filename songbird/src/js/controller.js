@@ -18,9 +18,9 @@ const controlCheckAnswer = function(elem) {
         const rightAnswer = model.getAnsweredBird(model.state.level, elem.id);
 
         // Render Answer
-        randomBirdView.update(rightAnswer);
+        randomBirdView.render(rightAnswer);
         birdCardView.render(rightAnswer);
-        model.setSongDurations(model.state.answered);
+        model.setSongDurations();
 
         // Set score
         model.state.score = model.state.score + 5 - model.state.missedAnsw;
@@ -33,7 +33,7 @@ const controlCheckAnswer = function(elem) {
             nextLevelBtn.classList.add('next-btn_finish');
         }
     } else {
-        // Remenber if the answer was wrong 
+        // Remember if the answer was wrong 
         if(!model.state.answered == true && !elem.firstElementChild.classList.contains('answers-options__status_wrong')) {
             elem.firstElementChild.classList.add('answers-options__status_wrong');
             model.state.missedAnsw++;

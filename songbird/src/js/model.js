@@ -35,14 +35,11 @@ const renderSongDuration = function(audio) {
     durationEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
 } 
 
-export const setSongDurations = function(flag) {
+export const setSongDurations = function() {
     const allAudios = document.querySelectorAll('.audio__src');
 
     allAudios.forEach(audio => {
-        if(flag) {
-            renderSongDuration(audio)
-        }
-        
+
         audio.addEventListener('canplay', function() {
             renderSongDuration(audio)
         });
