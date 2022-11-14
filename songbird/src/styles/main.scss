@@ -103,7 +103,8 @@ html {
 
 .next-btn_active,
 .next-btn_finish,
-.next-btn_try-again {
+.next-btn_try-again,
+.start-btn {
     background-color: var(--quiz-color-active);
     cursor: pointer;
     &:hover {

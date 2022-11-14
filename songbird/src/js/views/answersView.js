@@ -1,10 +1,20 @@
 import previewAnswersView from "./previewAnswersView";
 import View from "./View";
+import * as helpers from '../helpers';
+
 
 class AnswersView extends View {
     _parentElement = document.querySelector('.answers-options');
     _nextBtn = document.querySelector('.next-btn');
     
+
+    _addHandlerStartGame(handler) {
+        this._nextBtn.addEventListener('click', function(e) {
+            if (e.target.classList.contains('start-btn')) {
+                handler(e.target);
+            }
+        })
+    }
 
     _addHandlerNextLevel(handler) {
         this._nextBtn.addEventListener('click', function(e) {
@@ -17,15 +27,7 @@ class AnswersView extends View {
     _addHandlerFinishGame(handler) {
         this._nextBtn.addEventListener('click', function(e) {
             if(e.target.classList.contains('next-btn_finish')) {
-                const secretBirdCont = document.querySelector('.secret-bird');
-                const answersCont = document.querySelector('.answers');  
-                const answersOpt = document.querySelector('.answers-options');
-                const birdCard = document.querySelector('.bird-card');
-        
-                secretBirdCont.classList.add('hidden');
-                answersCont.classList.add('hidden');
-                answersOpt.classList.add('hidden');
-                birdCard.classList.add('hidden');
+                helpers.toggleShowGame();
 
                 const allAudios = document.querySelectorAll('.audio__src');
                 allAudios.forEach(audio => audio.pause());
@@ -39,16 +41,8 @@ class AnswersView extends View {
         this._nextBtn.addEventListener('click', function(e) {
             if(e.target.classList.contains('next-btn_try-again')){
                 const finishScreen = document.querySelector('.finish-game');
-                const secretBirdCont = document.querySelector('.secret-bird');
-                const answersCont = document.querySelector('.answers');  
-                const answersOpt = document.querySelector('.answers-options');
-                const birdCard = document.querySelector('.bird-card');
-
                 finishScreen.classList.add('hidden');
-                secretBirdCont.classList.remove('hidden');
-                answersCont.classList.remove('hidden');
-                answersOpt.classList.remove('hidden');
-                birdCard.classList.remove('hidden');
+                helpers.toggleShowGame();
         
                 handler(e.target);
             }

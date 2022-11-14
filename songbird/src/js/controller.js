@@ -1,5 +1,8 @@
 import '../styles/main.scss';
 import * as model from './model';
+import * as helpers from './helpers';
+
+import welcomeScreenView from './views/welcomeScreenView';
 import randomBirdView from './views/randomBirdView';
 import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
@@ -77,6 +80,13 @@ const initLevel = function(level) {
     model.setSongDurations();
 }
 
+const controlStartGame = function(btn) {
+    btn.classList.remove('start-btn');
+    btn.textContent = 'Следующий Уровень';
+    helpers.toggleShowGame();
+    initQize();
+}
+
 const controlNextLevel = function(btn) {
     btn.classList.remove('next-btn_active');
     model.state.level++;
@@ -103,16 +113,23 @@ const controlTryAgain = function(btn) {
     model.state.level = 0;
     scoreInd.textContent = model.state.score;
 
-    init();
+    initQize();
 }
+
+function initQize() {
+    welcomeScreenView._clear();
+    initLevel(model.state.level);
+}
+
 
 function init() {
     const rssLogoPlace = document.querySelector('.rssLogo');
-
     rssLogoPlace.src = rssLogo;
+    
+    welcomeScreenView.render(model.state);
+    helpers.toggleShowGame();
 
-    initLevel(model.state.level);
-
+    answersView._addHandlerStartGame(controlStartGame);
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);
     answersView._addHandlerFinishGame(controlFinishGame);
