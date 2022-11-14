@@ -4,6 +4,7 @@
     border: 1px solid var(--border-color);
     background-color: var(--background-color-secondary);
     border-radius: 5px;
+    height: 310px;
 
     .answers-options__item {
         display: flex;
@@ -27,6 +28,11 @@
             background-color: var(--color-light);
             border-radius: 50%;
             margin-right: 15px;
+            pointer-events: none;
+        }
+
+        .answers-options__title {
+            pointer-events: none;
         }
 
         .answers-options__status_right {

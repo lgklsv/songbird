@@ -9,6 +9,7 @@ import rssLogo from '../assets/svg/rs_school_js.svg';
 
 
 const controlCheckAnswer = function(elem) {
+    console.log(elem);
     if(elem.id == model.state.hiddenBird && !elem.firstElementChild.classList.contains('answers-options__status_right')) {
         const scoreInd = document.querySelector('.header__score-amount');
         const nextLevelBtn = document.querySelector('.next-btn');
