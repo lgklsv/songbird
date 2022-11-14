@@ -5,6 +5,7 @@ import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
 import audioView from './views/audioView';
 import finishGameView from './views/finishGameView';
+import rssLogo from '../assets/svg/rs_school_js.svg';
 
 
 const controlCheckAnswer = function(elem) {
@@ -97,6 +98,8 @@ const controlTryAgain = function(btn) {
 }
 
 function init() {
+    const rssLogoPlace = document.querySelector('.rssLogo');
+    rssLogoPlace.src = rssLogo;
     initLevel(model.state.level);
 
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
