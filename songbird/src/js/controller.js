@@ -5,14 +5,19 @@ import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
 import audioView from './views/audioView';
 import finishGameView from './views/finishGameView';
+
 import rssLogo from '../assets/svg/rs_school_js.svg';
 
+import rightSound from '../assets/sounds/win.a1e9e8b6.mp3';
+import errorSound from '../assets/sounds/error.165166d5.mp3';
 
 const controlCheckAnswer = function(elem) {
-    console.log(elem);
     if(elem.id == model.state.hiddenBird && !elem.firstElementChild.classList.contains('answers-options__status_right')) {
         const scoreInd = document.querySelector('.header__score-amount');
         const nextLevelBtn = document.querySelector('.next-btn');
+        const rightAudio = new Audio(rightSound);
+        rightAudio.volume = 0.4;
+        rightAudio.play();
 
         // Show that the answer is correct
         elem.firstElementChild.classList.add('answers-options__status_right');
@@ -39,6 +44,9 @@ const controlCheckAnswer = function(elem) {
         if(!model.state.answered == true && !elem.firstElementChild.classList.contains('answers-options__status_wrong')) {
             elem.firstElementChild.classList.add('answers-options__status_wrong');
             model.state.missedAnsw++;
+            const errAudio = new Audio(errorSound);
+            errAudio.volume = 0.5
+            errAudio.play();
         }
         // Render Bird
         const answeredBird = model.getAnsweredBird(model.state.level, elem.id)
@@ -100,7 +108,9 @@ const controlTryAgain = function(btn) {
 
 function init() {
     const rssLogoPlace = document.querySelector('.rssLogo');
+
     rssLogoPlace.src = rssLogo;
+
     initLevel(model.state.level);
 
     answersView._addHandlerCheckAnswer(controlCheckAnswer);

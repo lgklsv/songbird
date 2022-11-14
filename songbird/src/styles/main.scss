@@ -67,7 +67,9 @@ html {
     z-index: 2;
 }
 
-.audio__src {
+.audio__src,
+.rightSound,
+.errorSound {
     display: none;
 }
 
