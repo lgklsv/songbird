@@ -11,7 +11,6 @@ import finishGameView from './views/finishGameView';
 import galleryView from './views/galleryView';
 import headerView from './views/headerView';
 
-
 import rssLogo from '../assets/svg/rs_school_js.svg';
 
 import rightSound from '../assets/sounds/win.a1e9e8b6.mp3';

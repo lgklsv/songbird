@@ -1,5 +1,15 @@
 @media (max-width: 1200px) {
 
+    .gallery-render {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        .bird-card_gallery {
+            min-height: 270px;
+        }
+    }
+
     .container {
         width: 960px;
     }
@@ -43,8 +53,10 @@
     }
 
     .header {
-        .header__gallery {
-            .header__gallery-text {
+        .header__gallery,
+        .header__quiz {
+            .header__gallery-text,
+            .header__quiz-text {
                 display: none;
             }
         }
@@ -101,6 +113,24 @@
 }
 
 @media (max-width: 560px) {
+
+    .bird-card_gallery {
+        
+        .bird-card__header {
+            display: flex;
+            flex-direction: column;
+    
+            .bird-card__img {
+                align-self: center;
+            }
+    
+            .bird-card__info {
+                margin-top: 0;
+                text-align: center;
+            }
+        }
+    }
+    
 
     .secret-bird {
         display: flex;
