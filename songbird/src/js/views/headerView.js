@@ -14,6 +14,9 @@ class HeaderView extends View {
 
     _addHandlerOpenGallery(handler) {
         this._galleryBtn.addEventListener('click', function(e) {
+            const allAudios = document.querySelectorAll('.audio__src');
+            allAudios.forEach(audio => audio.pause());
+
             handler(e.target);
         })
     }

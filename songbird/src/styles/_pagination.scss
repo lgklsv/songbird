@@ -1,0 +1,22 @@
+.pagination {
+    .gallery__btn {
+        background-color: var(--quiz-color-active);
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        color: var(--text-color);
+
+        &:hover {
+            background-color: var(--quiz-color-active-hover);
+            cursor: pointer;
+        }
+    }
+
+    .gallery__btn_next {
+        float: right;
+    }
+
+    .gallery__btn_prev {
+        float: left;
+    }
+}

@@ -1,4 +1,5 @@
 import birds from './birds';
+import { RES_PER_PAGE } from "./config.js";
 
 export const state = {
     score: 0,
@@ -6,7 +7,10 @@ export const state = {
     hiddenBird: null,
     level: 0,
     missedAnsw: 0,
-    lastLevel: birds.length - 1
+    lastLevel: birds.length - 1,
+    birds: birds.flat(),
+    page: 1,
+    resultsPerPage: RES_PER_PAGE
 }
 
 export const getRandomBird = function(level) {
@@ -60,4 +64,13 @@ export const setSongDurations = function() {
 
         })
     })
+}
+
+export const getGalleryPage = function(page = state.page) {
+    state.page = page;
+
+    const start = (page -1) * state.resultsPerPage; 
+    const end = page * state.resultsPerPage;
+
+    return state.birds.slice(start, end);
 }

@@ -5,6 +5,7 @@
 @import 'answers-options';
 @import 'bird-card';
 @import 'start-finish-game';
+@import 'pagination';
 @import 'footer';
 
 
@@ -86,7 +87,7 @@ html {
     white-space: pre-line;
 }
 
-.gallery-render {
+.gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;

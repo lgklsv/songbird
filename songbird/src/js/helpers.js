@@ -9,3 +9,8 @@ export const toggleShowGame = function() {
     answersOpt.classList.toggle('hidden');
     birdCard.classList.toggle('hidden');
 }
+
+export const hideQuizLine = function() {
+    const quizLine = document.querySelector('.quiz-line');
+    quizLine.classList.add('hidden');
+}

@@ -1,6 +1,7 @@
 import '../styles/main.scss';
 import * as model from './model';
 import * as helpers from './helpers';
+import { ANSWERS_VOLUME } from "./config.js";
 
 import welcomeScreenView from './views/welcomeScreenView';
 import randomBirdView from './views/randomBirdView';
@@ -10,19 +11,19 @@ import audioView from './views/audioView';
 import finishGameView from './views/finishGameView';
 import galleryView from './views/galleryView';
 import headerView from './views/headerView';
+import paginationView from './views/paginationView';
 
 import rssLogo from '../assets/svg/rs_school_js.svg';
 
 import rightSound from '../assets/sounds/win.a1e9e8b6.mp3';
 import errorSound from '../assets/sounds/error.165166d5.mp3';
-import birdsData from './birds';
 
 const controlCheckAnswer = function(elem) {
     if(elem.id == model.state.hiddenBird && !elem.firstElementChild.classList.contains('answers-options__status_right')) {
         const scoreInd = document.querySelector('.header__score-amount');
         const nextLevelBtn = document.querySelector('.next-btn');
         const rightAudio = new Audio(rightSound);
-        rightAudio.volume = 0.4;
+        rightAudio.volume = ANSWERS_VOLUME;
         rightAudio.play();
 
         // Show that the answer is correct
@@ -51,7 +52,7 @@ const controlCheckAnswer = function(elem) {
             elem.firstElementChild.classList.add('answers-options__status_wrong');
             model.state.missedAnsw++;
             const errAudio = new Audio(errorSound);
-            errAudio.volume = 0.5
+            errAudio.volume = ANSWERS_VOLUME;
             errAudio.play();
         }
         // Render Bird
@@ -81,12 +82,12 @@ const zeroScore = function() {
 
 const controlGallery = function() {
     zeroScore();
-    const gameBtn =  document.querySelector('.next-btn');
-    const gallery = document.querySelector('.gallery-render');
-    gallery.style.marginTop = '1.5rem';
+    const gameBtn = document.querySelector('.next-btn');
+    const gallery = document.querySelector('.gallery');
+    gallery.style.marginTop = '1rem';
     gallery.style.marginBottom = '1.5rem';
-    gameBtn.className = 'next-btn start-btn';
-    gameBtn.textContent = 'Начать игру';
+    gameBtn.classList.add('hidden');
+    helpers.hideQuizLine();
 
     const answ = document.querySelector('.answers');
     if(answ.className == 'answers') {
@@ -96,18 +97,29 @@ const controlGallery = function() {
     welcomeScreenView._clear();
     finishGameView._clear();
 
-    galleryView.render(birdsData);
+    galleryView.render(model.getGalleryPage(1));
+  
+    paginationView.render(model.state);
+    model.setSongDurations();
+}
+
+const controlPagination = function(goToPage) {
+    galleryView.render(model.getGalleryPage(goToPage));
+  
+    paginationView.render(model.state);
     model.setSongDurations();
 }
 
 const constolOpenQuizHeader = function() {
-    const gallery = document.querySelector('.gallery-render');
+    const gallery = document.querySelector('.gallery');
     gallery.style.marginTop = '0rem';
     gallery.style.marginBottom = '0rem';
 
     const gameBtn = document.querySelector('.next-btn');
-    gameBtn.classList.remove('start-btn');
+    gameBtn.className = 'next-btn';
     gameBtn.textContent = 'Следующий Уровень';
+
+    paginationView._clear();
 
     const answ = document.querySelector('.answers');
     if(answ.className == 'answers hidden') {
@@ -129,7 +141,7 @@ const initLevel = function(level) {
 }
 
 const controlStartGame = function(btn) {
-    const gallery = document.querySelector('.gallery-render');
+    const gallery = document.querySelector('.gallery');
     gallery.style.marginTop = '0rem';
     gallery.style.marginBottom = '0rem';
     btn.classList.remove('start-btn');
@@ -148,6 +160,7 @@ const controlNextLevel = function(btn) {
 }
 
 const controlFinishGame = function(btn) {
+    helpers.hideQuizLine();
     btn.classList.remove('next-btn_finish');
     btn.textContent = 'Попробовать еще раз!';
 
@@ -162,6 +175,8 @@ const controlTryAgain = function(btn) {
 }
 
 function initQize() {
+    const quizLine = document.querySelector('.quiz-line');
+    quizLine.className = 'quiz-line';
     zeroScore();
     welcomeScreenView._clear();
     galleryView._clear();
@@ -170,6 +185,8 @@ function initQize() {
 
 function init() {
     const rssLogoPlace = document.querySelector('.rssLogo');
+    helpers.hideQuizLine();
+
     rssLogoPlace.src = rssLogo;
     
     welcomeScreenView.render(model.state);
@@ -177,6 +194,9 @@ function init() {
 
     headerView._addHandlerOpenGallery(controlGallery);
     headerView._addHandlerOpenQuiz(constolOpenQuizHeader);
+
+    paginationView.addHandlerClick(controlPagination);
+
     answersView._addHandlerStartGame(controlStartGame);
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);
