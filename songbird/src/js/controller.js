@@ -8,11 +8,15 @@ import answersView from './views/answersView';
 import birdCardView from './views/birdCardView';
 import audioView from './views/audioView';
 import finishGameView from './views/finishGameView';
+import galleryView from './views/galleryView';
+import headerView from './views/headerView';
+
 
 import rssLogo from '../assets/svg/rs_school_js.svg';
 
 import rightSound from '../assets/sounds/win.a1e9e8b6.mp3';
 import errorSound from '../assets/sounds/error.165166d5.mp3';
+import birdsData from './birds';
 
 const controlCheckAnswer = function(elem) {
     if(elem.id == model.state.hiddenBird && !elem.firstElementChild.classList.contains('answers-options__status_right')) {
@@ -68,6 +72,38 @@ const controlNextLevelOnTheLine = function(level) {
     levelItems[level].classList.add('quiz-line__btn_active');
 }
 
+const zeroScore = function() {
+    const scoreInd = document.querySelector('.header__score-amount');
+    model.state.score = 0;
+    model.state.level = 0;
+    scoreInd.textContent = model.state.score;
+    controlNextLevelOnTheLine(model.state.level);
+}
+
+const controlGallery = function() {
+    zeroScore();
+
+    const gameBtn =  document.querySelector('.next-btn');
+    const gallery = document.querySelector('.gallery-render');
+    gallery.style.marginTop = '1.5rem';
+    gallery.style.marginBottom = '1.5rem';
+    gameBtn.className = 'next-btn start-btn';
+    gameBtn.textContent = 'Начать игру';
+
+    const answ = document.querySelector('.answers');
+    console.log(answ.className);
+    if(answ.className == 'answers') {
+        console.log('here');
+        helpers.toggleShowGame();
+    }
+
+    welcomeScreenView._clear();
+    finishGameView._clear();
+
+    galleryView.render(birdsData);
+    model.setSongDurations();
+}
+
 const initLevel = function(level) {
     model.state.answered = false;
     model.state.hiddenBird = null;
@@ -105,19 +141,15 @@ const controlFinishGame = function(btn) {
 }
 
 const controlTryAgain = function(btn) {
-    const scoreInd = document.querySelector('.header__score-amount');
-
     btn.classList.remove('next-btn_try-again');
     btn.textContent = 'Следующий Уровень';
-    model.state.score = 0;
-    model.state.level = 0;
-    scoreInd.textContent = model.state.score;
-
     initQize();
 }
 
 function initQize() {
+    zeroScore();
     welcomeScreenView._clear();
+    galleryView._clear();
     initLevel(model.state.level);
 }
 
@@ -128,6 +160,7 @@ function init() {
     welcomeScreenView.render(model.state);
     helpers.toggleShowGame();
 
+    headerView._addHandlerOpenGallery(controlGallery);
     answersView._addHandlerStartGame(controlStartGame);
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);

@@ -86,6 +86,12 @@ html {
     white-space: pre-line;
 }
 
+.gallery-render {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
 .next-btn {
     width: 100%;
     background-color: var(--background-color-secondary);
