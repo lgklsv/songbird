@@ -121,7 +121,6 @@ function initQize() {
     initLevel(model.state.level);
 }
 
-
 function init() {
     const rssLogoPlace = document.querySelector('.rssLogo');
     rssLogoPlace.src = rssLogo;
