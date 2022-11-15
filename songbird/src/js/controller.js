@@ -81,7 +81,6 @@ const zeroScore = function() {
 
 const controlGallery = function() {
     zeroScore();
-
     const gameBtn =  document.querySelector('.next-btn');
     const gallery = document.querySelector('.gallery-render');
     gallery.style.marginTop = '1.5rem';
@@ -90,9 +89,7 @@ const controlGallery = function() {
     gameBtn.textContent = 'Начать игру';
 
     const answ = document.querySelector('.answers');
-    console.log(answ.className);
     if(answ.className == 'answers') {
-        console.log('here');
         helpers.toggleShowGame();
     }
 
@@ -101,6 +98,22 @@ const controlGallery = function() {
 
     galleryView.render(birdsData);
     model.setSongDurations();
+}
+
+const constolOpenQuizHeader = function() {
+    const gallery = document.querySelector('.gallery-render');
+    gallery.style.marginTop = '0rem';
+    gallery.style.marginBottom = '0rem';
+
+    const gameBtn = document.querySelector('.next-btn');
+    gameBtn.classList.remove('start-btn');
+    gameBtn.textContent = 'Следующий Уровень';
+
+    const answ = document.querySelector('.answers');
+    if(answ.className == 'answers hidden') {
+        helpers.toggleShowGame();
+    }
+    initQize();
 }
 
 const initLevel = function(level) {
@@ -116,6 +129,9 @@ const initLevel = function(level) {
 }
 
 const controlStartGame = function(btn) {
+    const gallery = document.querySelector('.gallery-render');
+    gallery.style.marginTop = '0rem';
+    gallery.style.marginBottom = '0rem';
     btn.classList.remove('start-btn');
     btn.textContent = 'Следующий Уровень';
     helpers.toggleShowGame();
@@ -160,6 +176,7 @@ function init() {
     helpers.toggleShowGame();
 
     headerView._addHandlerOpenGallery(controlGallery);
+    headerView._addHandlerOpenQuiz(constolOpenQuizHeader);
     answersView._addHandlerStartGame(controlStartGame);
     answersView._addHandlerCheckAnswer(controlCheckAnswer);
     answersView._addHandlerNextLevel(controlNextLevel);
