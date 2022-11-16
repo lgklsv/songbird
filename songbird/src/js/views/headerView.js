@@ -15,6 +15,8 @@ class HeaderView extends View {
 
     _addHandlerLanguageSwitch(handler) {
         this._languageSwitch.addEventListener('change', function(e) {
+            const allAudios = document.querySelectorAll('.audio__src');
+            allAudios.forEach(audio => audio.pause());
             handler(e.target);
         })
     }
