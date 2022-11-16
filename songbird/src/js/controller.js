@@ -123,7 +123,7 @@ const constolOpenQuizHeader = function() {
 
     const gameBtn = document.querySelector('.next-btn');
     gameBtn.className = 'next-btn';
-    gameBtn.textContent = 'Следующий Уровень';
+    gameBtn.textContent = model.state.language == 'ru' ? 'Следующий Уровень' : 'Next Level';
 
     paginationView._clear();
 
@@ -142,7 +142,7 @@ const initLevel = function(level) {
     controlNextLevelOnTheLine(level);
     randomBirdView.render(model.getRandomBird(level));
     answersView.render(model.getRandomBirdsArray(level));
-    birdCardView.renderMessage('Послушайте плеер.\n Выберите птицу из списка');
+    birdCardView.renderMessage(model.state.language == 'ru' ? 'Послушайте плеер.\n Выберите птицу из списка' : 'Listen to the audio.\n Select a bird from the list');
     model.setSongDurations();
 }
 
@@ -151,7 +151,8 @@ const controlStartGame = function(btn) {
     gallery.style.marginTop = '0rem';
     gallery.style.marginBottom = '0rem';
     btn.classList.remove('start-btn');
-    btn.textContent = 'Следующий Уровень';
+    btn.textContent = model.state.language == 'ru' ? 'Следующий Уровень' : 'Next Level';
+
     helpers.toggleShowGame();
     initQize();
 }
@@ -160,7 +161,7 @@ const controlNextLevel = function(btn) {
     btn.classList.remove('next-btn_active');
     model.state.level++;
     if(model.state.lastLevel == model.state.level) {
-        btn.textContent = 'Завершить Игру';
+        btn.textContent = model.state.language == 'ru' ? 'Завершить Игру' : 'Finish Game';
     };
     initLevel(model.state.level);
 }
@@ -168,7 +169,8 @@ const controlNextLevel = function(btn) {
 const controlFinishGame = function(btn) {
     helpers.hideQuizLine();
     btn.classList.remove('next-btn_finish');
-    btn.textContent = 'Попробовать еще раз!';
+    btn.textContent = model.state.language == 'ru' ? 'Попробовать еще раз' : 'Try again';
+    
 
     finishGameView.render(model.state);
     setTimeout(() => btn.classList.add('next-btn_try-again'), 100);
@@ -176,13 +178,25 @@ const controlFinishGame = function(btn) {
 
 const controlTryAgain = function(btn) {
     btn.classList.remove('next-btn_try-again');
-    btn.textContent = 'Следующий Уровень';
+    btn.textContent = model.state.language == 'ru' ? 'Следующий Уровень' : 'Next Level';
+
     initQize();
 }
 
 function initQize() {
     const quizLine = document.querySelector('.quiz-line');
     quizLine.className = 'quiz-line';
+
+    // Localization
+    const quizLineTexts = document.querySelectorAll('.quiz-line__text');
+    const quizLineRu = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
+    const quizLineEn = ['Warm-up', 'Sparrows', 'Forest birds', 'Songbirds', 'Predatory birds', 'Seabirds'];
+
+    quizLineTexts.forEach((item, index) => {
+        item.textContent = model.state.language == 'ru' ? quizLineRu[index] : quizLineEn[index];
+    })
+
+
     zeroScore();
     welcomeScreenView._clear();
     galleryView._clear();
@@ -196,6 +210,18 @@ function init() {
     rssLogoPlace.src = rssLogo;
     
     welcomeScreenView.render(model.state);
+
+    // Localization
+    const btn = document.querySelector('.next-btn');
+    const quizBtn = document.querySelector('.header__quiz-text');
+    const galleryBtn = document.querySelector('.header__gallery-text');
+    const scoreText  = document.querySelector('.regtext_score');
+
+    scoreText.textContent = model.state.language == 'ru' ? 'Баллы:ㅤ' : 'Score:ㅤ';
+    btn.textContent = model.state.language == 'ru' ? 'Начать игру' : 'Play';
+    quizBtn.textContent = model.state.language == 'ru' ? 'Викторина' : 'Quiz';
+    galleryBtn.textContent = model.state.language == 'ru' ? 'Галерея' : 'Gallery';
+
     helpers.toggleShowGame();
 
     headerView._addHandlerOpenGallery(controlGallery);

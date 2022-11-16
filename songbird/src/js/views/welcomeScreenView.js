@@ -1,4 +1,5 @@
 import View from "./View"; 
+import { state as state } from '../model';
 
 class WelcomeScreenView extends View {
     _parentElement = document.querySelector('.screen-render');
@@ -7,10 +8,10 @@ class WelcomeScreenView extends View {
     _generateMarkup() {
         return `
             <div class="welcome-screen">
-                <h2 class="welcome-screen__header">Добро пожаловать в Songbird! 🕊️</h2>
-                <p class="welcome-screen__text">Это игра-викторина, где вам нужно угадать питицу по ее голосу!</p>
-                <p class="welcome-screen__text">Всех птиц можно посмотреть в галерее.</p>
-                <p class="welcome-screen__text">Чтобы начать игру нажми на кнопку снизу!</p>
+                <h2 class="welcome-screen__header">${state.language == 'ru' ? 'Добро пожаловать в Songbird! 🕊️' : 'Welcome to Songbird! 🕊️'}</h2>
+                <p class="welcome-screen__text">${state.language == 'ru' ? 'Это игра-викторина, где вам нужно угадать питицу по ее голосу!' : 'This is the quiz game where you should guess the birds by its voice!'}</p>
+                <p class="welcome-screen__text">${state.language == 'ru' ? 'Всех птиц можно посмотреть в галерее.' : 'You can find all birds in the gallery.'}</p>
+                <p class="welcome-screen__text">${state.language == 'ru' ? 'Чтобы начать игру нажми на кнопку снизу!' : 'To start the game click the button below!'}</p>
             </div>
         `;
     }

@@ -1,19 +1,26 @@
-import birds from './birds';
+import birdsRU from './birds';
+import birdsEN from './birds-en';
 import { RES_PER_PAGE } from "./config.js";
 
 export const state = {
+    language: 'en',
     score: 0,
     answered: false,
     hiddenBird: null,
     level: 0,
     missedAnsw: 0,
-    lastLevel: birds.length - 1,
-    birds: birds.flat(),
+    lastLevel: birdsRU.length - 1,
+    birdsRU: birdsRU.flat(),
+    birdsEN: birdsEN.flat(),
     page: 1,
-    resultsPerPage: RES_PER_PAGE
+    resultsPerPage: RES_PER_PAGE,
+    getBirds: function() {
+        return this.language == 'ru' ? birdsRU : birdsEN;
+    }
 }
 
 export const getRandomBird = function(level) {
+    const birds = state.getBirds();
     const lengthArr = birds[level].length;
     const randomNum = Math.floor(Math.random() * (lengthArr - 1 + 1) + 1);
 
@@ -23,10 +30,12 @@ export const getRandomBird = function(level) {
 }
 
 export const getRandomBirdsArray = function(level) {
+    const birds = state.getBirds();
     return birds[level].sort( () => Math.random() - 0.5);
 }
 
 export const getAnsweredBird = function(level, id) {
+    const birds = state.getBirds();
     return birds[level].find(bird => bird.id == id);
 }
 
@@ -67,10 +76,11 @@ export const setSongDurations = function() {
 }
 
 export const getGalleryPage = function(page = state.page) {
+    const birds = state.getBirds();
     state.page = page;
 
     const start = (page -1) * state.resultsPerPage; 
     const end = page * state.resultsPerPage;
 
-    return state.birds.slice(start, end);
+    return birds.flat().slice(start, end);
 }
