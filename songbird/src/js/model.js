@@ -84,3 +84,7 @@ export const getGalleryPage = function(page = state.page) {
 
     return birds.flat().slice(start, end);
 }
+
+export const persistLanguage = function() {
+    localStorage.setItem('language', JSON.stringify(state.language));
+}

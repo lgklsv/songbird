@@ -120,6 +120,7 @@ const controlLanguage = function(btn) {
     } else {
         model.state.language = 'ru';
     }
+    model.persistLanguage();
 
     initApp();
 }
@@ -214,6 +215,12 @@ function initQize() {
 }
 
 function initApp() {
+
+    const storage = localStorage.getItem('language');
+    if(storage)  {
+        model.state.language = JSON.parse(storage);
+    }
+
     const rssLogoPlace = document.querySelector('.rssLogo');
     helpers.hideQuizLine();
 
@@ -251,9 +258,10 @@ function initApp() {
     galleryView._clear();
     paginationView._clear();
 }
-initApp();
+
 
 function init() {
+    initApp();
     headerView._addHandlerLanguageSwitch(controlLanguage);
     headerView._addHandlerOpenGallery(controlGallery);
     headerView._addHandlerOpenQuiz(constolOpenQuizHeader);
