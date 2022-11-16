@@ -53,7 +53,7 @@ export const setSongDurations = function() {
 
     allAudios.forEach(audio => {
 
-        audio.addEventListener('canplay', function() {
+        audio.addEventListener('loadedmetadata', function() {
             renderSongDuration(audio)
         });
 

@@ -115,12 +115,13 @@ const controlPagination = function(goToPage) {
 }
 
 const controlLanguage = function(btn) {
-    console.log(btn.checked);
-    // if(btn.checked) {
-    //     model.state.language = 'en';
-    // }
-    // model.state.language = 'ru';
-    // initQize();
+    if(btn.checked) {
+        model.state.language = 'en';
+    } else {
+        model.state.language = 'ru';
+    }
+
+    initApp();
 }
 
 const constolOpenQuizHeader = function() {
@@ -212,7 +213,7 @@ function initQize() {
     initLevel(model.state.level);
 }
 
-function init() {
+function initApp() {
     const rssLogoPlace = document.querySelector('.rssLogo');
     helpers.hideQuizLine();
 
@@ -225,14 +226,34 @@ function init() {
     const quizBtn = document.querySelector('.header__quiz-text');
     const galleryBtn = document.querySelector('.header__gallery-text');
     const scoreText  = document.querySelector('.regtext_score');
+    const footer = document.querySelector('.footer');
+
+    footer.style.height = '80px';
+    footer.style.paddingBottom = '1rem';
+    
+    btn.className = ('next-btn start-btn');
 
     scoreText.textContent = model.state.language == 'ru' ? 'Баллы:ㅤ' : 'Score:ㅤ';
     btn.textContent = model.state.language == 'ru' ? 'Начать игру' : 'Play';
     quizBtn.textContent = model.state.language == 'ru' ? 'Викторина' : 'Quiz';
     galleryBtn.textContent = model.state.language == 'ru' ? 'Галерея' : 'Gallery';
 
-    helpers.toggleShowGame();
+    const languageSwitch = document.getElementById('language-toggle');
+    if (model.state.language == 'ru') {
+        languageSwitch.checked = false;
+    } else {
+        languageSwitch.checked = true;
+    }
 
+    zeroScore();
+
+    helpers.hideGame();
+    galleryView._clear();
+    paginationView._clear();
+}
+initApp();
+
+function init() {
     headerView._addHandlerLanguageSwitch(controlLanguage);
     headerView._addHandlerOpenGallery(controlGallery);
     headerView._addHandlerOpenQuiz(constolOpenQuizHeader);
@@ -245,4 +266,5 @@ function init() {
     answersView._addHandlerFinishGame(controlFinishGame);
     answersView._addHandlerTryAgain(controlTryAgain);
 }
+
 init();
