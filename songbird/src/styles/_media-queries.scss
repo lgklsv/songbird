@@ -54,6 +54,10 @@
 
 @media (max-width: 768px) {
 
+    .footer {
+        font-size: 8px;
+    }
+
     .container {
         width: 540px;
     }
@@ -238,7 +242,7 @@
 
     .gallery {
         .bird-card_gallery {
-            min-height: 515px;
+            min-height: 518px;
         }
     }
 
@@ -248,6 +252,10 @@
 }
 
 @media (max-width: 400px) {
+
+    .footer {
+        font-size: 7px;
+    }
 
     .container {
         width: 360px;

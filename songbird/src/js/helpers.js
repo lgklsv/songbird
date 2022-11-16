@@ -14,3 +14,10 @@ export const hideQuizLine = function() {
     const quizLine = document.querySelector('.quiz-line');
     quizLine.classList.add('hidden');
 }
+
+export const revealFooter = function() {
+    const footer = document.querySelector('.footer');
+
+    footer.style.height = '80px';
+    footer.style.paddingBottom = '1rem';
+}

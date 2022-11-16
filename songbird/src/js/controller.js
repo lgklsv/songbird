@@ -84,8 +84,12 @@ const controlGallery = function() {
     zeroScore();
     const gameBtn = document.querySelector('.next-btn');
     const gallery = document.querySelector('.gallery');
-    gallery.style.marginTop = '1rem';
-    gallery.style.marginBottom = '1.5rem';
+    const footer = document.querySelector('.footer');
+
+    footer.style.height = '0px';
+    footer.style.paddingBottom = '2rem';
+    gallery.style.marginTop = '0rem';
+    gallery.style.marginBottom = '1rem';
     gameBtn.classList.add('hidden');
     helpers.hideQuizLine();
 
@@ -114,6 +118,8 @@ const constolOpenQuizHeader = function() {
     const gallery = document.querySelector('.gallery');
     gallery.style.marginTop = '0rem';
     gallery.style.marginBottom = '0rem';
+
+    helpers.revealFooter();
 
     const gameBtn = document.querySelector('.next-btn');
     gameBtn.className = 'next-btn';
