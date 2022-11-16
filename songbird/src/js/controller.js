@@ -114,6 +114,15 @@ const controlPagination = function(goToPage) {
     model.setSongDurations();
 }
 
+const controlLanguage = function(btn) {
+    console.log(btn.checked);
+    // if(btn.checked) {
+    //     model.state.language = 'en';
+    // }
+    // model.state.language = 'ru';
+    // initQize();
+}
+
 const constolOpenQuizHeader = function() {
     const gallery = document.querySelector('.gallery');
     gallery.style.marginTop = '0rem';
@@ -224,6 +233,7 @@ function init() {
 
     helpers.toggleShowGame();
 
+    headerView._addHandlerLanguageSwitch(controlLanguage);
     headerView._addHandlerOpenGallery(controlGallery);
     headerView._addHandlerOpenQuiz(constolOpenQuizHeader);
 
