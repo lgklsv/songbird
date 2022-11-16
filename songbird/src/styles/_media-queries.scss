@@ -197,9 +197,19 @@
     .header {
         margin-top: 0rem;
         .header__logo {
-            margin-top: 1.3rem;
+            margin-top: 1.8rem;
             width: 100px;
             height: 50px;
+        }
+
+        .header__gallery,
+        .header__quiz {
+            padding-left: 0.6rem;
+            padding-right: 0.6rem;
+        }
+
+        .header__score {
+            margin-left: 0;
         }
     }
 
