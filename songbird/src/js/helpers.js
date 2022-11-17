@@ -33,3 +33,19 @@ export const revealFooter = function() {
     footer.style.height = '80px';
     footer.style.paddingBottom = '1rem';
 }
+
+export const styleBackGallery = function() {
+    const gallery = document.querySelector('.gallery');
+    gallery.style.marginTop = '0rem';
+    gallery.style.marginBottom = '0rem';
+}
+
+export const styleGallery = function() {
+    const gallery = document.querySelector('.gallery');
+    const footer = document.querySelector('.footer');
+    
+    footer.style.height = '0px';
+    footer.style.paddingBottom = '2rem';
+    gallery.style.marginTop = '0rem';
+    gallery.style.marginBottom = '1rem';
+}

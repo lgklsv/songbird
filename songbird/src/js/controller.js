@@ -82,15 +82,11 @@ const zeroScore = function() {
 
 const controlGallery = function() {
     zeroScore();
-    const gameBtn = document.querySelector('.next-btn');
-    const gallery = document.querySelector('.gallery');
-    const footer = document.querySelector('.footer');
+    helpers.styleGallery();
 
-    footer.style.height = '0px';
-    footer.style.paddingBottom = '2rem';
-    gallery.style.marginTop = '0rem';
-    gallery.style.marginBottom = '1rem';
+    const gameBtn = document.querySelector('.next-btn');
     gameBtn.classList.add('hidden');
+
     helpers.hideQuizLine();
 
     const answ = document.querySelector('.answers');
@@ -126,10 +122,7 @@ const controlLanguage = function(btn) {
 }
 
 const constolOpenQuizHeader = function() {
-    const gallery = document.querySelector('.gallery');
-    gallery.style.marginTop = '0rem';
-    gallery.style.marginBottom = '0rem';
-
+    helpers.styleBackGallery();
     helpers.revealFooter();
 
     const gameBtn = document.querySelector('.next-btn');
@@ -158,9 +151,7 @@ const initLevel = function(level) {
 }
 
 const controlStartGame = function(btn) {
-    const gallery = document.querySelector('.gallery');
-    gallery.style.marginTop = '0rem';
-    gallery.style.marginBottom = '0rem';
+    helpers.styleBackGallery();
     btn.classList.remove('start-btn');
     btn.textContent = model.state.language == 'ru' ? 'Следующий Уровень' : 'Next Level';
 
@@ -182,7 +173,6 @@ const controlFinishGame = function(btn) {
     btn.classList.remove('next-btn_finish');
     btn.textContent = model.state.language == 'ru' ? 'Попробовать еще раз' : 'Try again';
     
-
     finishGameView.render(model.state);
     setTimeout(() => btn.classList.add('next-btn_try-again'), 100);
 }
@@ -207,7 +197,6 @@ function initQize() {
         item.textContent = model.state.language == 'ru' ? quizLineRu[index] : quizLineEn[index];
     })
 
-
     zeroScore();
     welcomeScreenView._clear();
     galleryView._clear();
@@ -215,7 +204,6 @@ function initQize() {
 }
 
 function initApp() {
-
     const storage = localStorage.getItem('language');
     if(storage)  {
         model.state.language = JSON.parse(storage);
@@ -225,7 +213,6 @@ function initApp() {
     helpers.hideQuizLine();
 
     rssLogoPlace.src = rssLogo;
-    
     welcomeScreenView.render(model.state);
 
     // Localization
@@ -233,10 +220,9 @@ function initApp() {
     const quizBtn = document.querySelector('.header__quiz-text');
     const galleryBtn = document.querySelector('.header__gallery-text');
     const scoreText  = document.querySelector('.regtext_score');
-    const footer = document.querySelector('.footer');
 
-    footer.style.height = '80px';
-    footer.style.paddingBottom = '1rem';
+    helpers.revealFooter();
+    helpers.styleBackGallery();
     
     btn.className = ('next-btn start-btn');
 
@@ -253,7 +239,6 @@ function initApp() {
     }
 
     zeroScore();
-
     helpers.hideGame();
     galleryView._clear();
     paginationView._clear();
