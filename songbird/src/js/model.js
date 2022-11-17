@@ -3,7 +3,7 @@ import birdsEN from './birds-en';
 import { RES_PER_PAGE } from "./config.js";
 
 export const state = {
-    language: 'en',
+    language: 'ru',
     score: 0,
     answered: false,
     hiddenBird: null,
