@@ -47,5 +47,5 @@ export const styleGallery = function() {
     footer.style.height = '0px';
     footer.style.paddingBottom = '2rem';
     gallery.style.marginTop = '0rem';
-    gallery.style.marginBottom = '1rem';
+    gallery.style.marginBottom = '0.5rem';
 }

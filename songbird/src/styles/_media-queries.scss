@@ -21,6 +21,11 @@
 
 @media (max-width: 990px) {
 
+    .finish-game, 
+    .welcome-screen {
+        height: 60vh;
+    }
+
     .container {
         width: 720px;
     }
