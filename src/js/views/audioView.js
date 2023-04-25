@@ -1,97 +1,98 @@
-import View from "./View";
+import View from './View';
 
 class AudioView extends View {
-    _overlay = document.querySelector('.overlay');
+  _overlay = document.querySelector('.overlay');
 
-    constructor() {
-        super();
-        this._addHandlerControls();
-        this._addHandlerProgressBar();
-        this._addHandlerOverlay();
-    }
+  constructor() {
+    super();
+    this._addHandlerControls();
+    this._addHandlerProgressBar();
+    this._addHandlerOverlay();
+  }
 
-    _addHandlerOverlay() {
-        this._overlay.addEventListener('click', function(e) {
-            const volumeInputs = document.querySelectorAll('.change-volume');
+  _addHandlerOverlay() {
+    this._overlay.addEventListener('click', function (e) {
+      const volumeInputs = document.querySelectorAll('.change-volume');
 
-            volumeInputs.forEach(inp => inp.classList.add('hidden'));
-            e.target.classList.add('hidden');
-        })
-    }
-    
-    _addHandlerControls() {
-        document.body.addEventListener('click', function(e) {
-            if(e.target.classList == 'audio__btn-circle') {
-                const playIcon = e.target.firstElementChild;
-                const audio = e.target.previousElementSibling;
+      volumeInputs.forEach((inp) => inp.classList.add('hidden'));
+      e.target.classList.add('hidden');
+    });
+  }
 
-                playIcon.classList.toggle('fa-play');
-                playIcon.classList.toggle('fa-pause');
+  _addHandlerControls() {
+    document.body.addEventListener('click', function (e) {
+      if (e.target.classList == 'audio__btn-circle') {
+        const playIcon = e.target.firstElementChild;
+        const audio = e.target.previousElementSibling;
 
-                if (playIcon.classList.contains('fa-play')) {
-                    audio.pause();
-                } 
-                if (playIcon.classList.contains('fa-pause')) {
-                    audio.play();
-                }
-            } 
-            if(e.target.classList == 'audio__volume') {
-                document.querySelector('.overlay').classList.remove('hidden');
+        playIcon.classList.toggle('fa-play');
+        playIcon.classList.toggle('fa-pause');
 
-                const volumeBtn = e.target;
-                const volumeElement = volumeBtn.firstElementChild.nextElementSibling;
-                const audio = volumeBtn.parentElement.firstElementChild;
-                const volumeInput = volumeElement.firstElementChild;
+        if (playIcon.classList.contains('fa-play')) {
+          audio.pause();
+        }
+        if (playIcon.classList.contains('fa-pause')) {
+          audio.play();
+        }
+      }
+      if (e.target.classList == 'audio__volume') {
+        document.querySelector('.overlay').classList.remove('hidden');
 
-                volumeInput.value = audio.volume * 100;
+        const volumeBtn = e.target;
+        const volumeElement = volumeBtn.firstElementChild.nextElementSibling;
+        const audio = volumeBtn.parentElement.firstElementChild;
+        const volumeInput = volumeElement.firstElementChild;
 
-                volumeElement.classList.toggle('hidden');
-            } 
-        })
-    }
+        volumeInput.value = audio.volume * 100;
 
-    _addHandlerProgressBar() {
-        document.body.addEventListener('input', function(e) {
-            if(e.target.classList.contains('slider_birds')) {
-                const curPercentage = e.target.value;
-                const audio = e.target.parentElement.previousElementSibling.previousElementSibling;
-                const durationCurEl = audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
-                const duration = audio.duration;
+        volumeElement.classList.toggle('hidden');
+      }
+    });
+  }
 
-                const curSec = (duration/100) * curPercentage;
-                const sec = parseInt(curSec % 60);
-                const min = parseInt((curSec / 60) % 60);
-                durationCurEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-                audio.currentTime = curSec;
+  _addHandlerProgressBar() {
+    document.body.addEventListener('input', function (e) {
+      if (e.target.classList.contains('slider_birds')) {
+        const curPercentage = e.target.value;
+        const audio = e.target.parentElement.previousElementSibling.previousElementSibling;
+        const durationCurEl =
+          audio.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
+        const duration = audio.duration;
 
-                e.target.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${curPercentage}%, rgb(115, 115, 115) ${curPercentage}%, rgb(115, 115, 115) 100%)`;
-                e.target.value = curPercentage;
-            }
+        const curSec = (duration / 100) * curPercentage;
+        const sec = parseInt(curSec % 60);
+        const min = parseInt((curSec / 60) % 60);
+        durationCurEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        audio.currentTime = curSec;
 
-            if (e.target.classList.contains('slider_vertical')) {
-                const volumeValue = e.target.value;
-                const audio = e.target.parentElement.parentElement.parentElement.firstElementChild; 
-                const audioIcon = e.target.parentElement.previousElementSibling;
+        e.target.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) ${curPercentage}%, rgb(115, 115, 115) ${curPercentage}%, rgb(115, 115, 115) 100%)`;
+        e.target.value = curPercentage;
+      }
 
-                if(volumeValue > 50 && !audioIcon.classList.contains('fa-volume-high')) {
-                    audioIcon.className = '';
-                    audioIcon.classList.add('fa-solid');
-                    audioIcon.classList.add('fa-volume-high');
-                }
-                if(volumeValue <= 50 && !audioIcon.classList.contains('fa-volume-low')) {
-                    audioIcon.className = '';
-                    audioIcon.classList.add('fa-solid');
-                    audioIcon.classList.add('fa-volume-low');
-                }
-                if(volumeValue == 0 && !audioIcon.classList.contains('fa-volume-xmark')) {
-                    audioIcon.className = '';
-                    audioIcon.classList.add('fa-solid');
-                    audioIcon.classList.add('fa-volume-xmark');
-                }
-                audio.volume = volumeValue/100;
-            }
-        })
-    }
+      if (e.target.classList.contains('slider_vertical')) {
+        const volumeValue = e.target.value;
+        const audio = e.target.parentElement.parentElement.parentElement.firstElementChild;
+        const audioIcon = e.target.parentElement.previousElementSibling;
+
+        if (volumeValue > 50 && !audioIcon.classList.contains('fa-volume-high')) {
+          audioIcon.className = '';
+          audioIcon.classList.add('fa-solid');
+          audioIcon.classList.add('fa-volume-high');
+        }
+        if (volumeValue <= 50 && !audioIcon.classList.contains('fa-volume-low')) {
+          audioIcon.className = '';
+          audioIcon.classList.add('fa-solid');
+          audioIcon.classList.add('fa-volume-low');
+        }
+        if (volumeValue == 0 && !audioIcon.classList.contains('fa-volume-xmark')) {
+          audioIcon.className = '';
+          audioIcon.classList.add('fa-solid');
+          audioIcon.classList.add('fa-volume-xmark');
+        }
+        audio.volume = volumeValue / 100;
+      }
+    });
+  }
 }
 
 export default new AudioView();

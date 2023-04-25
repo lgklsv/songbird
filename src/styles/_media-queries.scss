@@ -1,284 +1,272 @@
 @media (max-width: 1200px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 
-    .gallery {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-
-        .bird-card_gallery {
-            min-height: 280px;
-        }
+    .bird-card_gallery {
+      min-height: 280px;
     }
+  }
 
-    .container {
-        width: 960px;
-    }
+  .container {
+    width: 960px;
+  }
 
-    .answers {
-        grid-template-columns: 0.6fr 1fr;
-    }
+  .answers {
+    grid-template-columns: 0.6fr 1fr;
+  }
 }
 
 @media (max-width: 990px) {
+  .finish-game,
+  .welcome-screen {
+    height: 60vh;
+  }
 
-    .finish-game, 
-    .welcome-screen {
-        height: 60vh;
-    }
+  .container {
+    width: 720px;
+  }
 
-    .container {
-        width: 720px;
+  .gallery {
+    .bird-card_gallery {
+      min-height: 300px;
     }
+  }
 
-    .gallery {
-        .bird-card_gallery {
-            min-height: 300px;
-        }
+  .welcome-screen {
+    .welcome-screen__header {
+      font-size: 3rem;
     }
+    .welcome-screen__text {
+      font-size: 1.3rem;
+    }
+  }
 
-    .welcome-screen  {
-        .welcome-screen__header {
-            font-size: 3rem;
-        }
-        .welcome-screen__text {
-            font-size: 1.3rem;
-        }
-    }
+  .answers {
+    grid-template-columns: 0.3fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 
-    .answers {
-        grid-template-columns: 0.3fr 1fr;
-        gap: 1rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .secret-bird {
-        margin-top: 1rem;
-    }
+  .secret-bird {
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .footer {
+    font-size: 8px;
+  }
 
-    .footer {
-        font-size: 8px;
+  .container {
+    width: 540px;
+  }
+
+  .gallery {
+    .bird-card_gallery {
+      min-height: 320px;
+    }
+  }
+
+  .header {
+    .header__gallery,
+    .header__quiz {
+      .header__gallery-text,
+      .header__quiz-text {
+        display: none;
+      }
+    }
+  }
+
+  .answers {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-line {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    .quiz-line__btn {
+      &:first-child {
+        border-radius: 5px 0 0 0;
+      }
+
+      &:nth-child(3) {
+        border-radius: 0 5px 0 0;
+      }
+
+      &:nth-child(4) {
+        border-radius: 0 0 0 5px;
+      }
+
+      &:last-child {
+        border-radius: 0 0 5px 0;
+      }
+    }
+  }
+
+  .secret-bird {
+    .secret-bird__img {
+      margin: 0.5rem;
     }
 
-    .container {
-        width: 540px;
-    }
+    .secret-bird__info {
+      padding-left: 0.2rem;
 
-    .gallery {
-        .bird-card_gallery {
-            min-height: 320px;
+      .secret-bird__audio {
+        .audio__input {
+          margin-left: 0.5rem;
         }
+      }
     }
-
-    .header {
-        .header__gallery,
-        .header__quiz {
-            .header__gallery-text,
-            .header__quiz-text {
-                display: none;
-            }
-        }
-    }
-
-    .answers {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .quiz-line {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-
-        .quiz-line__btn {
-
-            &:first-child {
-                border-radius: 5px 0 0 0;
-            }
-
-            &:nth-child(3) {
-                border-radius: 0 5px 0 0;
-            }
-
-            &:nth-child(4) {
-                border-radius: 0 0 0 5px;
-            }
-    
-            &:last-child {
-                border-radius: 0 0 5px 0;
-            }
-        }
-    }
-
-    .secret-bird {
-
-        .secret-bird__img {
-            margin: 0.5rem;
-        }
-
-        .secret-bird__info {
-            padding-left: 0.2rem;
-
-            .secret-bird__audio {
-
-                .audio__input {
-                    margin-left: 0.5rem;
-                }
-            }
-        }
-    }
+  }
 }
 
 @media (max-width: 560px) {
-
-    .gallery {
-        .bird-card_gallery {
-            min-height: 495px;
-        }
-    }
-
+  .gallery {
     .bird-card_gallery {
-        
-        .bird-card__header {
-            display: flex;
-            flex-direction: column;
-    
-            .bird-card__img {
-                align-self: center;
-            }
-    
-            .bird-card__info {
-                margin-top: 0;
-                text-align: center;
-            }
-        }
+      min-height: 495px;
     }
-    
+  }
 
-    .secret-bird {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+  .bird-card_gallery {
+    .bird-card__header {
+      display: flex;
+      flex-direction: column;
 
-        .secret-bird__img {
-            align-self: center;
-        }
+      .bird-card__img {
+        align-self: center;
+      }
 
-        .secret-bird__info {
-            .secret-bird__title {
-                text-align: center;
-                margin-top: 0;
-            }
+      .bird-card__info {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+  }
 
-            .secret-bird__audio {
-                margin: 1rem;
-            }
-        }
+  .secret-bird {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .secret-bird__img {
+      align-self: center;
     }
 
-    .bird-card {
-        .bird-card__header {
-            display: flex;
-            flex-direction: column;
+    .secret-bird__info {
+      .secret-bird__title {
+        text-align: center;
+        margin-top: 0;
+      }
 
-            .bird-card__img {
-                align-self: center;
-            }
-
-            .bird-card__info {
-                margin-top: 0;
-                text-align: center;
-            }
-        }
+      .secret-bird__audio {
+        margin: 1rem;
+      }
     }
+  }
+
+  .bird-card {
+    .bird-card__header {
+      display: flex;
+      flex-direction: column;
+
+      .bird-card__img {
+        align-self: center;
+      }
+
+      .bird-card__info {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+  }
 }
 
 @media (max-width: 540px) {
-
-    .header {
-        margin-top: 0rem;
-        .header__logo {
-            margin-top: 1.8rem;
-            width: 100px;
-            height: 50px;
-        }
-
-        .header__gallery,
-        .header__quiz {
-            padding-left: 0.6rem;
-            padding-right: 0.6rem;
-        }
-
-        .header__score {
-            margin-left: 0;
-        }
+  .header {
+    margin-top: 0rem;
+    .header__logo {
+      margin-top: 1.8rem;
+      width: 100px;
+      height: 50px;
     }
 
-    .welcome-screen  {
-        .welcome-screen__header {
-            font-size: 2rem;
-        }
-        .welcome-screen__text {
-            font-size: 1rem;
-        }
+    .header__gallery,
+    .header__quiz {
+      padding-left: 0.6rem;
+      padding-right: 0.6rem;
     }
 
-    .finish-game {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+    .header__score {
+      margin-left: 0;
+    }
+  }
 
-        .finish-game__header {
-            font-size: 2.5rem;
-        }
+  .welcome-screen {
+    .welcome-screen__header {
+      font-size: 2rem;
+    }
+    .welcome-screen__text {
+      font-size: 1rem;
+    }
+  }
 
-        .finish-game__text {
-            font-size: 1rem;
-        }
+  .finish-game {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .finish-game__header {
+      font-size: 2.5rem;
     }
 
-    .container {
-        width: 450px;
+    .finish-game__text {
+      font-size: 1rem;
     }
+  }
+
+  .container {
+    width: 450px;
+  }
 }
 
 @media (max-width: 450px) {
-
-    .quiz-line {
-        .quiz-line__btn {
-            .quiz-line__text {
-                padding: 4px 12px ;
-            }
-        }
+  .quiz-line {
+    .quiz-line__btn {
+      .quiz-line__text {
+        padding: 4px 12px;
+      }
     }
+  }
 
-    .gallery {
-        .bird-card_gallery {
-            min-height: 518px;
-        }
+  .gallery {
+    .bird-card_gallery {
+      min-height: 518px;
     }
+  }
 
-    .container {
-        width: 400px;
-    }
+  .container {
+    width: 400px;
+  }
 }
 
 @media (max-width: 400px) {
+  .footer {
+    font-size: 7px;
+  }
 
-    .footer {
-        font-size: 7px;
-    }
+  .container {
+    width: 360px;
+  }
 
-    .container {
-        width: 360px;
+  .gallery {
+    .bird-card_gallery {
+      min-height: 540px;
     }
-
-    .gallery {
-        .bird-card_gallery {
-            min-height: 540px;
-        }
-    }
+  }
 }

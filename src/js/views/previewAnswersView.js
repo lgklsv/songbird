@@ -1,10 +1,10 @@
-import View from "./View";
+import View from './View';
 
 class PreviewAnswersView extends View {
-    _parentElement = '';
+  _parentElement = '';
 
-    _generateMarkup() {
-        return `
+  _generateMarkup() {
+    return `
             <div class="answers-options__item" id="${this._data.id}">
                 <div class="answers-options__status"></div>
                 <div class="answers-options__title">
@@ -12,7 +12,7 @@ class PreviewAnswersView extends View {
                 </div>
             </div>
         `;
-    }
+  }
 }
 
 export default new PreviewAnswersView();

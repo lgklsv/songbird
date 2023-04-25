@@ -4,83 +4,78 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: {
-        bundle: path.resolve(__dirname, 'src/js/controller.js'),
+  mode: 'development',
+  entry: {
+    bundle: path.resolve(__dirname, 'src/js/controller.js'),
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: '[name][contenthash].js',
+    clean: true,
+    assetModuleFilename: '[name][ext]',
+  },
+  devtool: 'source-map',
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
     },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: "/",
-        filename: '[name][contenthash].js' ,
-        clean: true,
-        assetModuleFilename: '[name][ext]',
-    },
-    devtool: 'source-map',
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'dist')
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
-        port: 3000,
-        open: true,
-        hot: true,
-        compress: true,
-        historyApiFallback: true,
-    },
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                ],
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
-                },
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-            },
-            {
-                test:/\.mp3$/,
-                use: ['file-loader'],
-            },
-        ],
-    },
-    plugins: [
-        new HtmlWebpackPlugin ({
-            title: 'Songbird',
-            filename: 'index.html',
-            template: 'src/pages/app.html',
-            chunks: ['bundle']
-        }),
-        new MiniCssExtractPlugin({
-            // filename: '[name].[hash:8].css',
-        }  
-        ),
-        new FaviconsWebpackPlugin({
-            logo: 'src/assets/img/favicon.png',
-            mode: 'webapp',
-            devMode: 'webapp',
-            prefix: 'assets/favicons/',
-            cache: true,
-            inject: htmlPlugin => {
-              return true;
-              return basename(htmlPlugin.options.filename) === 'pages/articles.html';
-            },
-            favicons: {
-              background: '#fff',
-              theme_color: '#333',
-            },
-        }),
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.mp3$/,
+        use: ['file-loader'],
+      },
     ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Songbird',
+      filename: 'index.html',
+      template: 'src/pages/app.html',
+      chunks: ['bundle'],
+    }),
+    new MiniCssExtractPlugin({
+      // filename: '[name].[hash:8].css',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: 'src/assets/img/favicon.png',
+      mode: 'webapp',
+      devMode: 'webapp',
+      prefix: 'assets/favicons/',
+      cache: true,
+      inject: (htmlPlugin) => {
+        return true;
+        return basename(htmlPlugin.options.filename) === 'pages/articles.html';
+      },
+      favicons: {
+        background: '#fff',
+        theme_color: '#333',
+      },
+    }),
+  ],
 };

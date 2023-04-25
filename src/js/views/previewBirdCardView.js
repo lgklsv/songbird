@@ -1,10 +1,10 @@
-import View from "./View";
+import View from './View';
 
 class PreviewBirdCardView extends View {
-    _parentElement = '';
+  _parentElement = '';
 
-    _generateMarkup() {
-        return `
+  _generateMarkup() {
+    return `
         <div class="bird-card_gallery">
             <div class="bird-card__header">
                 <img class="bird-card__img" src="${this._data.image}" alt="${this._data.name}">
@@ -39,7 +39,7 @@ class PreviewBirdCardView extends View {
             </div>
         </div>
         `;
-    }
+  }
 }
 
 export default new PreviewBirdCardView();

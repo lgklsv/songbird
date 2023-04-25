@@ -1,10 +1,10 @@
-import View from "./View";
+import View from './View';
 
 class BirdCardView extends View {
-    _parentElement = document.querySelector('.bird-card');
+  _parentElement = document.querySelector('.bird-card');
 
-    _generateMarkup() {
-        return `
+  _generateMarkup() {
+    return `
             <div class="bird-card__header">
                 <img class="bird-card__img" src="${this._data.image}" alt="${this._data.name}">
                 <div class="bird-card__info">
@@ -37,7 +37,7 @@ class BirdCardView extends View {
                 <p class="bird-card__text regtext">${this._data.description}</p>
             </div>
         `;
-    }
+  }
 }
 
 export default new BirdCardView();

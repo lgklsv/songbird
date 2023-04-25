@@ -1,62 +1,61 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  margin-top: 0.6rem;
+
+  .header__items {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+  }
+
+  .header__gallery,
+  .header__quiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: var(--audio-time);
+    font-size: 1.171875rem;
+
+    .fa-images,
+    .fa-dove {
+      pointer-events: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: var(--text-color);
+    }
+
+    .header__gallery-text,
+    .header__quiz-text {
+      margin-left: 5px;
+      font-size: 1.171875rem;
+      pointer-events: none;
+    }
+  }
+
+  .header__score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    min-width: 100px;
+
+    .regtext_score {
+      font-size: 1.171875rem;
+    }
+  }
+
+  .header__logo {
+    background: url('../assets/svg/logo.4f82cd73.svg') no-repeat;
+    width: 170px;
+    margin-top: 1.3rem;
     height: 70px;
-    width: 100%;
-    margin-top: 0.6rem;
-
-    .header__items {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .header__gallery,
-    .header__quiz {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        color: var(--audio-time);
-        font-size: 1.171875rem;
-
-        .fa-images,
-        .fa-dove {
-            pointer-events: none;
-        }
-
-        &:hover {
-            cursor: pointer;
-            color: var(--text-color);
-        }
-
-        .header__gallery-text,
-        .header__quiz-text {
-            margin-left: 5px;
-            font-size: 1.171875rem;
-            pointer-events: none;
-        }
-    }
-
-    .header__score {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 0.5rem;
-        min-width: 100px;
-
-        .regtext_score {
-            font-size: 1.171875rem;
-        }
-    }
-
-    .header__logo {
-        background: url('../assets/svg/logo.4f82cd73.svg') no-repeat;
-        width: 170px;
-        margin-top: 1.3rem;
-        height: 70px;
-        background-size: 100%;
-    }
+    background-size: 100%;
+  }
 }
-

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -12,93 +12,93 @@
       referrerpolicy="no-referrer"
     />
     <title><%= htmlWebpackPlugin.options.title %></title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <div class="header">
-                <div class="header__logo"></div>
-                <div class="header__items">
-                    <div class="header__quiz">
-                        <i class="fa-solid fa-dove"></i>
-                        <p class="regtext header__quiz-text">Викторина</p>
-                    </div>
-                    <div class="header__gallery">
-                        <i class="fa-solid fa-images"></i>
-                        <p class="regtext header__gallery-text">Галерея</p>
-                    </div>
-                    <div class="header__switch-language">
-                        <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
-                        <label for="language-toggle"></label>
-                        <span class="on">РУ</span>
-                        <span class="off">EN</span>
-                    </div>
-                    <div class="header__score">
-                        <p class="regtext regtext_score">Баллы:ㅤ</p>
-                        <span class="regtext regtext_score header__score-amount">0</span>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="header">
+          <div class="header__logo"></div>
+          <div class="header__items">
+            <div class="header__quiz">
+              <i class="fa-solid fa-dove"></i>
+              <p class="regtext header__quiz-text">Викторина</p>
             </div>
+            <div class="header__gallery">
+              <i class="fa-solid fa-images"></i>
+              <p class="regtext header__gallery-text">Галерея</p>
+            </div>
+            <div class="header__switch-language">
+              <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" />
+              <label for="language-toggle"></label>
+              <span class="on">РУ</span>
+              <span class="off">EN</span>
+            </div>
+            <div class="header__score">
+              <p class="regtext regtext_score">Баллы:ㅤ</p>
+              <span class="regtext regtext_score header__score-amount">0</span>
+            </div>
+          </div>
         </div>
+      </div>
     </header>
     <main>
-        <div class="container">
-            <div class="quiz-line">
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Разминка</p>
-                </div>
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Воробьиные</p>
-                </div>
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Лесные птицы</p>
-                </div>
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Певчие птицы</p>
-                </div>
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Хищные птицы</p>
-                </div>
-                <div class="quiz-line__btn">
-                    <p class="regtext quiz-line__text">Морские птицы</p>
-                </div>
-            </div>
-            <div class="game-container">
-                <div class="screen-render"></div>
-                <div class="gallery"></div>
-                <div class="pagination"></div>
-
-                <div class="secret-bird"></div>
-                <div class="answers">
-                    <div class="answers-options"></div>
-                    <div class="bird-card"></div>
-                </div>
-            </div>
-        
-            <div class="next-btn start-btn">
-                <p class="regtext next-btn__text">Начать Игру</p>
-            </div>
+      <div class="container">
+        <div class="quiz-line">
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Разминка</p>
+          </div>
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Воробьиные</p>
+          </div>
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Лесные птицы</p>
+          </div>
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Певчие птицы</p>
+          </div>
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Хищные птицы</p>
+          </div>
+          <div class="quiz-line__btn">
+            <p class="regtext quiz-line__text">Морские птицы</p>
+          </div>
         </div>
-        <div class="overlay hidden"></div>
+        <div class="game-container">
+          <div class="screen-render"></div>
+          <div class="gallery"></div>
+          <div class="pagination"></div>
+
+          <div class="secret-bird"></div>
+          <div class="answers">
+            <div class="answers-options"></div>
+            <div class="bird-card"></div>
+          </div>
+        </div>
+
+        <div class="next-btn start-btn">
+          <p class="regtext next-btn__text">Начать Игру</p>
+        </div>
+      </div>
+      <div class="overlay hidden"></div>
     </main>
     <footer>
-        <div class="container">
-            <div class="footer">
-                <div class="footer__top">
-                    SONGBIRD ENGINEERED BY 
-                    <a class="footer__link" href="https://github.com/lgklsv" target="_blank">
-                        LGKLSV <i class="fa-brands fa-github"></i>
-                    </a>
-                </div>
-                <div class="footer__bottom">
-                    <a href="https://rs.school/js/" class="footer__link" target="_blank">
-                        <img class="rssLogo" src="" alt="rss-logo">
-                    </a>
-                    <p>&#169</p> 
-                    <p>2022</p> 
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer">
+          <div class="footer__top">
+            SONGBIRD ENGINEERED BY
+            <a class="footer__link" href="https://github.com/lgklsv" target="_blank">
+              LGKLSV <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+          <div class="footer__bottom">
+            <a href="https://rs.school/js/" class="footer__link" target="_blank">
+              <img class="rssLogo" src="" alt="rss-logo" />
+            </a>
+            <p>&#169;</p>
+            <p>2022</p>
+          </div>
         </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

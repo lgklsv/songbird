@@ -1,48 +1,48 @@
 .bird-card,
 .bird-card_gallery {
-    background-color: var(--background-color-secondary);
-    width: 100%;
-    min-height: 320px;
-    height: auto;
-    border-radius: 5px;
-    border: 1px solid var(--color-light);
+  background-color: var(--background-color-secondary);
+  width: 100%;
+  min-height: 320px;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid var(--color-light);
 
-    .bird-card__header {
-        display: flex;
+  .bird-card__header {
+    display: flex;
 
-        .bird-card__img {
-            margin: 1rem;
-            border-radius: 10px;
-            width: 200px;
-            height: 155px;
-            object-fit: cover;
-        }
-
-        .bird-card__info {
-            margin: 1.5rem;
-            flex-grow: 1;
-
-            .bird-card__title {
-                font-size: 22.5px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .bird-card__subtitle {
-                margin-top: 0.3rem;
-                padding-bottom: 5px;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .bird-card__audio {
-                margin-top: 1rem;
-                font-size: 2rem;
-            }
-        }
+    .bird-card__img {
+      margin: 1rem;
+      border-radius: 10px;
+      width: 200px;
+      height: 155px;
+      object-fit: cover;
     }
 
-    .bird-card__description {
-        margin: 0 1rem 1rem 1rem;
-        line-height: 23px;
+    .bird-card__info {
+      margin: 1.5rem;
+      flex-grow: 1;
+
+      .bird-card__title {
+        font-size: 22.5px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .bird-card__subtitle {
+        margin-top: 0.3rem;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .bird-card__audio {
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
     }
+  }
+
+  .bird-card__description {
+    margin: 0 1rem 1rem 1rem;
+    line-height: 23px;
+  }
 }
